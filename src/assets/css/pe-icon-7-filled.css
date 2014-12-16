@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'Pe-icon-7-filled';
-	src:url('../fonts/Pe-icon-7-filled.eot?kinggk');
-	src:url('../fonts/Pe-icon-7-filled.eot?#iefixkinggk') format('embedded-opentype'),
-		url('../fonts/Pe-icon-7-filled.woff?kinggk') format('woff'),
-		url('../fonts/Pe-icon-7-filled.ttf?kinggk') format('truetype'),
-		url('../fonts/Pe-icon-7-filled.svg?kinggk#Pe-icon-7-filled') format('svg');
+	src:url('../fonts/Pe-icon-7/Pe-icon-7-filled.eot?kinggk');
+	src:url('../fonts/Pe-icon-7/Pe-icon-7-filled.eot?#iefixkinggk') format('embedded-opentype'),
+		url('../fonts/Pe-icon-7/Pe-icon-7-filled.woff?kinggk') format('woff'),
+		url('../fonts/Pe-icon-7/Pe-icon-7-filled.ttf?kinggk') format('truetype'),
+		url('../fonts/Pe-icon-7/Pe-icon-7-filled.svg?kinggk#Pe-icon-7-filled') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
