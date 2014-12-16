@@ -36,33 +36,14 @@ module.exports = function(grunt) {
                 $production + 'assets/css/',
                 '!' + $production + 'assets/css/' + $buildName + '.css'
             ],
-            //removeFiraFontHacks: $production + 'assets/vendor/fira/fira.css'
         },
-        /*cssUrlRewrite: {
-            firaFontToProduction: {
-                src: $development + 'assets/vendor/fira/fira.css',
-                dest: $production + 'assets/vendor/fira/fira.css',
-                options: {
-                    //skipExternal: true,
-                    rewriteUrl: function(url, options, dataURI) {
-                        return '../fonts/Fira/' + url.replace($development + 'assets/vendor/fira/', '');
-                    }
-                }
-            }
-        },*/
         copy: {
             developmentToProduction: {
                 expand: true,
                 cwd: $development,
                 src: ['**'],
                 dest: $production
-            }/*,
-            firaFontToProduction: {
-                expand: true,
-                cwd: $production + 'assets/vendor/fira/',
-                src: ['otf/*', 'ttf/*', 'woff/*', 'eot/*'],
-                dest: $production + 'assets/fonts/Fira/'
-            }*/
+            }
         },
         imagemin: {
             dynamic: {
@@ -73,7 +54,7 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: $production + 'assets/images',
+                    cwd: $development + 'assets/images',
                     src: ['**/*.{png,jpg,jpeg,gif}'],
                     dest: $production + 'assets/images'
                 }]
@@ -122,9 +103,6 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'clean:oldDist',
         'copy:developmentToProduction',
-        //'clean:removeFiraFontHacks',
-        //'cssUrlRewrite:firaFontToProduction',
-        //'copy:firaFontToProduction',
         'clean:newDist',
         'useminPrepare',
         'concat:generated',
