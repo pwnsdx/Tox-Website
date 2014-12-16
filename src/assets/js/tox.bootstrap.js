@@ -3,7 +3,7 @@
     
     // Run the Bootstrap
     Tox.Bootstrap = function() {
-        alert(1);
+        console.log('heyhey');
     };
     
     return Tox.Bootstrap();
