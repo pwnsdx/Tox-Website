@@ -1,0 +1,62 @@
+/*
+* Remove text-shadow in selection highlight: h5bp.com/i
+* These selection rule sets have to be separate.
+* Customize the background color to match your design.
+* + Custom color
+*/
+::selection {
+    background:#000;
+    color:#ffffff;
+    -webkit-text-shadow: none;
+    -moz-text-shadow: none;
+    text-shadow: none;
+}
+::-moz-selection {
+    background:#000;
+    color:#ffffff;
+    -webkit-text-shadow: none;
+    -moz-text-shadow: none;
+    text-shadow: none;
+}
+::-webkit-selection {
+    background:#000;
+    color:#ffffff;
+    -webkit-text-shadow: none;
+    -moz-text-shadow: none;
+    text-shadow: none;
+}
+::-o-selection {
+    background:#000;
+    color:#ffffff;
+    -webkit-text-shadow: none;
+    -moz-text-shadow: none;
+    text-shadow: none;
+}
+::-ms-selection {
+    background:#000;
+    color:#ffffff;
+    -webkit-text-shadow: none;
+    -moz-text-shadow: none;
+    text-shadow: none;
+}
+
+
+body {
+
+    font-family: 'Fira Sans', 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;        
+    font-weight:300;
+    font-smooth:always;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    height:100%;
+    width:100%;
+    overflow: auto;
+    overflow-x: hidden;
+    -ms-overflow-x: hidden;
+
+    color:#6f6f6f;
+}
