@@ -6,6 +6,8 @@
 *
 */
 
+var mozjpeg = require('imagemin-mozjpeg');
+
 var $development = 'src/'; // Development Folder
 var $production  = 'dist/'; // Production Folder (this is where the webserver will server requests)
 var $buildName   = 'build'; // Prefix of the generated files (do not touch)
@@ -17,7 +19,7 @@ module.exports = function(grunt) {
         clean: {
             removeOldDist: $production,
             cleanupNewDist: [
-                $production + 'assets/vendor/',
+                $production + 'assets/vendor/', // Do not take vendor directory
                 $production + 'assets/js/',
                 '!' + $production + 'assets/js/' + $buildName + '.js',
                 $production + 'assets/css/',
@@ -31,6 +33,21 @@ module.exports = function(grunt) {
                 src: ['**'],
                 dest: $production
             },
+        },
+        imagemin: {
+            dynamic: {
+                options: {
+                    optimizationLevel: 7,
+                    svgoPlugins: [{ removeViewBox: false }],
+                    use: [mozjpeg()]
+                },
+                files: [{
+                    expand: true,
+                    cwd: $production + 'assets/images',
+                    src: ['**/*.{png,jpg,jpeg,gif}'],
+                    dest: $production + 'assets/images'
+                }]
+            }
         },
         useminPrepare: {
             html: $development + 'index.html',
@@ -63,12 +80,13 @@ module.exports = function(grunt) {
             html: $production + 'index.html'
         }
     });
-    
+
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-filerev');
     grunt.loadNpmTasks('grunt-usemin');
 
@@ -81,6 +99,7 @@ module.exports = function(grunt) {
         'cssmin:generated',
         'uglify:generated',
         'filerev',
+        'imagemin',
         'usemin'
     ]);
     grunt.registerTask('default', ['build']);
