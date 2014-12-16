@@ -9,30 +9,60 @@
 var mozjpeg = require('imagemin-mozjpeg');
 
 var $development = 'src/'; // Development Folder
-var $production  = 'dist/'; // Production Folder (this is where the webserver will server requests)
-var $buildName   = 'build'; // Prefix of the generated files (do not touch)
+var $production  = 'dist/'; // Production Folder (this is where the webserver will serve requests)
+var $buildName   = 'build'; // Prefix of the generated files (don't touch)
 
 module.exports = function(grunt) {
+
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-filerev');
+    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks("grunt-css-url-rewrite");
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            removeOldDist: $production,
-            cleanupNewDist: [
+            tempDir: '.tmp',
+            oldDist: $production,
+            newDist: [
                 $production + 'assets/vendor/', // Do not take vendor directory
                 $production + 'assets/js/',
                 '!' + $production + 'assets/js/' + $buildName + '.js',
                 $production + 'assets/css/',
                 '!' + $production + 'assets/css/' + $buildName + '.css'
-            ]
+            ],
+            //removeFiraFontHacks: $production + 'assets/vendor/fira/fira.css'
         },
+        /*cssUrlRewrite: {
+            firaFontToProduction: {
+                src: $development + 'assets/vendor/fira/fira.css',
+                dest: $production + 'assets/vendor/fira/fira.css',
+                options: {
+                    //skipExternal: true,
+                    rewriteUrl: function(url, options, dataURI) {
+                        return '../fonts/Fira/' + url.replace($development + 'assets/vendor/fira/', '');
+                    }
+                }
+            }
+        },*/
         copy: {
-            src: {
+            developmentToProduction: {
                 expand: true,
                 cwd: $development,
                 src: ['**'],
                 dest: $production
-            },
+            }/*,
+            firaFontToProduction: {
+                expand: true,
+                cwd: $production + 'assets/vendor/fira/',
+                src: ['otf/*', 'ttf/*', 'woff/*', 'eot/*'],
+                dest: $production + 'assets/fonts/Fira/'
+            }*/
         },
         imagemin: {
             dynamic: {
@@ -77,30 +107,33 @@ module.exports = function(grunt) {
             }
         },
         usemin: {
-            html: $production + 'index.html'
+            html: $production + 'index.html',
+            blockReplacements: {
+                css: function(block) {
+                    return '<link rel="stylesheet" type="text/css" href="' + block.dest + '" media="screen" />';
+                },
+                js: function(block) {
+                    return '<script type="text/javascript" src="' + block.dest + '"></script>';
+                }
+            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-filerev');
-    grunt.loadNpmTasks('grunt-usemin');
-
     grunt.registerTask('build', [
-        'clean:removeOldDist',
-        'copy:src',
-        'clean:cleanupNewDist',
+        'clean:oldDist',
+        'copy:developmentToProduction',
+        //'clean:removeFiraFontHacks',
+        //'cssUrlRewrite:firaFontToProduction',
+        //'copy:firaFontToProduction',
+        'clean:newDist',
         'useminPrepare',
         'concat:generated',
         'cssmin:generated',
         'uglify:generated',
         'filerev',
         'imagemin',
-        'usemin'
+        'usemin',
+        'clean:tempDir',
     ]);
     grunt.registerTask('default', ['build']);
 };
