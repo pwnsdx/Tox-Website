@@ -20,9 +20,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-filerev');
-    grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks("grunt-css-url-rewrite");
+    grunt.loadNpmTasks('grunt-filerev'); // https://github.com/yeoman/grunt-filerev
+    grunt.loadNpmTasks('grunt-usemin'); // https://github.com/yeoman/grunt-usemin
+    grunt.loadNpmTasks("grunt-image-embed"); // https://github.com/ehynds/grunt-image-embed
+    //grunt.loadNpmTasks("grunt-css-url-rewrite");
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
