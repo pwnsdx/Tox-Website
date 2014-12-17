@@ -1,0 +1,36 @@
+body {
+    
+}
+
+header.toxHeader {
+    height:500px;
+    width:100%;
+    
+    background-color:#000;
+}
+header.toxHeader section {
+    height:100%;
+    width:100%;
+    
+    background-image:url(../images/Background.png);
+    
+    background-repeat:no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+header.toxHeader section.active {
+    opacity:.6;
+}
+header.toxHeader footer {
+    
+}
+
+aside.toxObject {
+    height:1000px;
+    width:100%;
+    
+    background:#fff;
+}

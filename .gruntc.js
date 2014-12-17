@@ -101,7 +101,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('build', [
+    grunt.registerTask('default', [
         'clean:oldDist',
         'copy:developmentToProduction',
         'clean:newDist',
@@ -114,5 +114,4 @@ module.exports = function(grunt) {
         'usemin',
         'clean:tempDir',
     ]);
-    grunt.registerTask('default', ['build']);
 };
