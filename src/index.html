@@ -39,17 +39,15 @@
     <body>
         
         <header class="toxHeader">
-            <section>
+            <section data-1x="Background.png" data-2x="Background@2x.png">
                 <nav class="font FiraSans bold">
                     <ul class="small-centered small-9 medium-8 large-7 columns text-right">
-                        <li><a href="https://wiki.tox.im/" target="_blank">Wiki</a></li>
-                        <li><a href="http://support.libtoxcore.so/" target="_blank">Support</a></li>
-                        <li><a href="https://github.com/irungentoo/toxcore" target="_blank">Sources</a></li>
-                        <li><a href="https://donate.tox.im/" target="_blank">Donate</a></li>
+                        <li><a href="https://github.com/irungentoo/toxcore" target="_blank"><span class="pe-7s-box2"></span> Sources</a></li>
+                        <li><a href="https://donate.tox.im/" target="_blank"><span class="pe-7s-piggy"></span> Donate</a></li>
                     </ul>
                 </nav>
                 <div>
-                    <span></span>
+                    <span class="logo"></span>
                     <h1 class="font FiraSans light">A New Kind of Instant Messaging.</h1>
                     <p class="font FiraSans regular small-centered small-10 medium-8 large-7 columns">With the rise of government monitoring programs, Tox provides an easy to use application that allows you to connect with friends and family without anyone else listening in. While other big-name services require you to pay for features, Tox is totally free, and comes without advertising.</p>
                     <p class="download small-centered small-10 medium-8 large-6 columns"><a class="small-centered radius button small font FiraSans extrabold" href="">Download Alpha</a></p>
@@ -63,9 +61,22 @@
             </section>
         </header>
         
-        <aside class="toxObject"></aside>
+        <aside class="tObject light">
+            <aside>
+                <h2 class="font FiraSans regular text-center">Instant messaging, audio calling and much more.</h2>
+                <h3 class="font FiraSans regular text-center">Send messages, files, create groups and make secure Tox to Tox audio and video calls. Securely.</h3>
+                <section class="preview" data-1x="Windows-Sprite.png" data-2x="Windows-Sprite@2x.png">
+                    <div></div>
+                    <div></div>
+                </section>
+            </aside>
+        </aside>
+        <aside class="tObject dark"></aside>
+        <aside class="tObject light"></aside>
         
-        <footer class="toxFooter">Tox Footer</footer>
+        <footer class="toxFooter">
+        
+        </footer>
     
         <!-- build:js assets/js/build.js -->
         <script type="text/javascript" src="assets/vendor/fastclick/lib/fastclick.js"></script>
@@ -74,6 +85,7 @@
         <script type="text/javascript" src="assets/vendor/foundation/js/foundation.min.js"></script>
         <script type="text/javascript" src="assets/vendor/gsap/src/minified/TweenMax.min.js"></script>
         <script type="text/javascript" src="assets/vendor/ScrollMagic/js/jquery.scrollmagic.min.js"></script>
+        <script type="text/javascript" src="assets/vendor/dense/src/dense.js"></script>
         <script type="text/javascript" src="assets/js/tox.bootstrap.js"></script>
         <!-- endbuild -->
     </body>
