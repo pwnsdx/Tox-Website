@@ -32,10 +32,10 @@ module.exports = function(grunt) {
             oldDist: $production,
             newDist: [
                 $production + 'assets/vendor/', // Do not take vendor directory
-                $production + 'assets/js/',
-                '!' + $production + 'assets/js/' + $buildName + '.js',
-                $production + 'assets/css/',
-                '!' + $production + 'assets/css/' + $buildName + '.css'
+                $production + 'assets/js/*',
+                '!' + $production + 'assets/js/build.*.js',
+                $production + 'assets/css/*',
+                '!' + $production + 'assets/css/build.*.css'
             ],
         },
         copy: {
@@ -46,23 +46,32 @@ module.exports = function(grunt) {
                 dest: $production
             }
         },
+        imageEmbed: {
+            developmentToProduction: {
+                src: [ $development + 'assets/css/tox-homepage.css' ],
+                dest: $production + 'assets/css/tox-homepage.css',
+                options: {
+                    deleteAfterEncoding: true
+                }
+            }
+        },
         imagemin: {
             dynamic: {
                 options: {
-                    optimizationLevel: 7,
+                    optimizationLevel: 3,
                     svgoPlugins: [{ removeViewBox: false }],
                     use: [mozjpeg()]
                 },
                 files: [{
                     expand: true,
-                    cwd: $development + 'assets/images',
+                    cwd: $production + 'assets/images',
                     src: ['**/*.{png,jpg,jpeg,gif}'],
                     dest: $production + 'assets/images'
                 }]
             }
         },
         useminPrepare: {
-            html: $development + 'index.html',
+            html: $production + 'index.html',
         },
         cssmin: {
             options: {
@@ -102,16 +111,17 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', [
-        'clean:oldDist',
-        'copy:developmentToProduction',
-        'clean:newDist',
-        'useminPrepare',
-        'concat:generated',
-        'cssmin:generated',
-        'uglify:generated',
-        'filerev',
-        'imagemin',
-        'usemin',
-        'clean:tempDir',
+        'clean:oldDist', // Remove old directory
+        'copy:developmentToProduction', // Copy development directory to production
+        'useminPrepare', // Prepare minified files
+        'concat:generated', // Concact files
+        'cssmin:generated', // Minify CSS files
+        'uglify:generated', // Minify JS files
+        'filerev', // Add SHA1 hash in JS/CSS files
+        'imagemin', // Minify images
+        'imageEmbed:developmentToProduction', // Add minified images (less than 32kb) direcly in the CSS with base64 technique
+        'usemin', // Finish usemin operation 
+        'clean:newDist', // Clean the development directory
+        'clean:tempDir' // Remove temp directories
     ]);
 };
