@@ -23,20 +23,19 @@ header.toxHeader section {
     
     opacity:0;
     
-    background-image:url(../images/Background.png);
     background-repeat:no-repeat;
-    background-position: center -200px;
     
-    /*-webkit-background-size: cover;
+    -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;*/
+    background-size: cover;
 }
 html.no-js header.toxHeader section {
     opacity:1;
+    background-image:url(../images/Background.png);
 }
 header.toxHeader section.tween {
-    background-position: center 0;
+
 }
 
 header.toxHeader section nav {
@@ -68,6 +67,9 @@ header.toxHeader section nav ul li a {
 }
 header.toxHeader section nav ul li a:hover {
     color: #fff;
+}
+header.toxHeader section nav ul li a span {
+    vertical-align:middle;
 }
 header.toxHeader section div {
     width:100%;
@@ -101,7 +103,7 @@ html.csstransforms header.toxHeader section div {
 html.csstransforms header.toxHeader section div.tween {
     top: 80%;
 }
-header.toxHeader section div span {
+header.toxHeader section div span.logo {
     display:block;
     
     height:99px;
@@ -110,7 +112,7 @@ header.toxHeader section div span {
     background-size:81px 99px;
     background-repeat:no-repeat;
     background-position:center top;
-        
+
     opacity:.8;
 }
 header.toxHeader section div b {
