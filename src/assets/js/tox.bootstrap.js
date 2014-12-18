@@ -88,16 +88,19 @@
             
             // Show Header
             TweenMax.to([
-                'body header.toxHeader section'
+                'header.toxHeader section'
             ], .4, {delay: 1, opacity: 1, ease: Sine.easeInOut, onComplete: function() {
             
                 // Create Tween
                 var Tween = TweenMax.to([
-                        'body header.toxHeader section',
-                        'body header.toxHeader section div',
-                        'body header.toxHeader footer'
-                    ], 1, {className: '+=active', ease: Sine.easeInOut});
-                    //TweenMax.to('body header.toxHeader section div', 1, {className: '+=active', ease: Sine.easeInOut})
+                    'body header.toxHeader section',
+                    'body header.toxHeader section div',
+                    'body header.toxHeader footer'
+                ], 1, {
+                    opacity:0.3,
+                    className: '+=tween',
+                    ease: Sine.easeInOut
+                });
 
                 // Create the new scene
                 var scrollScenes = [
@@ -118,7 +121,7 @@
             }});
             
             // Add scrolling arrow bouncing
-            (new TimelineMax({repeat:300, delay:1})
+            (new TimelineMax({repeat:300, delay:0.5})
             .add(TweenMax.to([
                 'header.toxHeader footer span'
             ], 1, {y:'10', ease:Bounce.easeOut}))
@@ -126,7 +129,7 @@
                 'header.toxHeader footer span'
             ], 1, {delay: 2, y:0, ease:Sine.easeOut})));
             
-            return scrollScenes;
+            return true;
         },
         
         Footer : function()
@@ -170,8 +173,8 @@
             };
             
             // Fire events
-            Tox.s(window).on('resize', Foundation.utils.throttle(function(e) {
-                
+            Tox.s(window).on('resize.tox', Foundation.utils.throttle(function(e) {
+                                
                 // Get Height / Width
                 Tox.resize.stats = {
                     h: Tox.s('body').outerHeight(),
