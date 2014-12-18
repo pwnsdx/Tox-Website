@@ -1,0 +1,36 @@
+{
+  "name": "dense",
+  "main": [
+    "src/dense.js"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  },
+  "homepage": "https://github.com/gocom/dense",
+  "authors": [
+    "Jukka Svahn"
+  ],
+  "description": "Serve device pixel ratio aware, retina-ready images with ease",
+  "keywords": [
+    "retina",
+    "responsive",
+    "image",
+    "HDI",
+    "PPI"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "test"
+  ],
+  "_release": "81e4d6ec61",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "81e4d6ec61dfe3495dc64ae0bb6ba9811fb3ec80"
+  },
+  "_source": "git://github.com/gocom/dense.git",
+  "_target": "*",
+  "_originalSource": "dense",
+  "_direct": true
+}
