@@ -143,7 +143,7 @@
             One: function()
             {
                 // Get right background density and load it
-                //Tox.utils.injectBackground('header.toxHeader section');
+                Tox.utils.injectBackground('aside.tObject section.preview', 'aside.tObject section.preview div');
             }
         },
         
@@ -206,10 +206,10 @@
     Tox.utils = {
 
         // Dense (Retina Detector) helper
-        injectBackground: function(selector) {
+        injectBackground: function(selector, selectorTarget) {
             var image = Tox.s(selector).dense('getImageAttribute');
             if(image == '') return false;
-            return Tox.s(selector).css({'background-image': 'url("' + Tox.d.pathToAssets + image + '")'});
+            return Tox.s((typeof selectorTarget == "undefined" ? selector : selectorTarget)).css({'background-image': 'url("' + Tox.d.pathToAssets + image + '")'});
         }
     };
     
