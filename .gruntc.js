@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         },
         imageEmbed: {
             developmentToProduction: {
-                src: [ $development + 'assets/css/tox-homepage.css' ],
+                src: [ $production + 'assets/css/tox-homepage.css' ],
                 dest: $production + 'assets/css/tox-homepage.css',
                 options: {
                     deleteAfterEncoding: true
@@ -113,13 +113,13 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'clean:oldDist', // Remove old directory
         'copy:developmentToProduction', // Copy development directory to production
+        'imagemin', // Minify images
+        'imageEmbed:developmentToProduction', // Add minified images (less than 32kb) direcly in the CSS with base64 technique
         'useminPrepare', // Prepare minified files
         'concat:generated', // Concact files
         'cssmin:generated', // Minify CSS files
         'uglify:generated', // Minify JS files
         'filerev', // Add SHA1 hash in JS/CSS files
-        'imagemin', // Minify images
-        'imageEmbed:developmentToProduction', // Add minified images (less than 32kb) direcly in the CSS with base64 technique
         'usemin', // Finish usemin operation 
         'clean:newDist', // Clean the development directory
         'clean:tempDir' // Remove temp directories
