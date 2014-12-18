@@ -179,11 +179,44 @@ header.toxHeader footer span {
 }
 
 /* CONTENT */
-aside.toxObject {
-    height:1000px;
+aside.tObject {
+    min-height:200px;
+    
+    padding-top:20px;
+    padding-bottom:20px;
+    
     width:100%;
     
-    background:#fff;
+    background-repeat:no-repeat;
+    
+    text-shadow: 0px 1px 0px #fff;
+    -webkit-text-shadow: 0px 1px 0px #fff;
+    -o-text-shadow: 0px 1px 0px #fff;
+    -ms-text-shadow: 0px 1px 0px #fff;
+}
+aside.tObject h2 {
+    font-size:38px;
+    line-height:100px;
+}
+aside.tObject h3 {
+    font-size:26px;
+}
+aside.tObject.light {
+    background-color:#fff;
+}
+aside.tObject.light h2 {
+    color:#fc605b;
+}
+aside.tObject.light h3 {
+    color:#3c3b3b;
+}
+aside.tObject.dark {
+    background-color:#000;
+}
+
+aside.tObject section.preview {
+    height:500px;
+    width:100%;
 }
 
 /* FOOTER */
