@@ -49,8 +49,9 @@
         s: Foundation.utils.S, // Main selector
         e: function(e) { return e(); }, // Execute a function
         g: function(g) { return Foundation.utils.random_str(g); }, // Random string generator
-        d: {
-            scrollInstance: new ScrollMagic()
+        d: { // Defines
+            scrollInstance: new ScrollMagic(),
+            pathToAssets: 'assets/images/'
         }
     };
         
@@ -59,6 +60,8 @@
     {
         // Inject Scenes
         this.e(this.scenesMap.Header);
+        this.e(this.scenesMap.Content.One);
+        this.e(this.scenesMap.Footer);
         
         // Watch Resize Events
         Tox.resize.run();
@@ -135,7 +138,16 @@
             return true;
         },
         
-        Footer : function()
+        Content:
+        {
+            One: function()
+            {
+                // Get right background density and load it
+                //Tox.utils.injectBackground('header.toxHeader section');
+            }
+        },
+        
+        Footer: function()
         {
             return true;
         }
@@ -187,6 +199,17 @@
                 // Execute callbacks
                 execCallbacks(Tox.resize.stats.h, Tox.resize.stats.w);
             }, 10));
+        }
+    };
+    
+    // Tox Utilities
+    Tox.utils = {
+
+        // Dense (Retina Detector) helper
+        injectBackground: function(selector) {
+            var image = Tox.s(selector).dense('getImageAttribute');
+            if(image == '') return false;
+            return Tox.s(selector).css({'background-image': 'url("' + Tox.d.pathToAssets + image + '")'});
         }
     };
     
