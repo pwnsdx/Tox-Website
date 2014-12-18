@@ -1,3 +1,33 @@
+html,
+button,
+input,
+select,
+textarea {
+    color: #f6f7fb;
+    outline:0;
+}
+
+html,
+body {
+    background-color:#000;
+    
+    -webkit-transition:background-color .25s cubic-bezier(.22,.85,.33,1.16);
+    -moz-transition:background-color .25s cubic-bezier(.22,.85,.33,1.16);
+    -o-transition:background-color .25s cubic-bezier(.22,.85,.33,1.16);
+    -ms-transition:background-color .25s cubic-bezier(.22,.85,.33,1.16);
+    transition:background-color .25s cubic-bezier(.22,.85,.33,1.16);
+
+    font-size: 1em;
+    line-height: 1.4;
+    
+    height:100%;
+    width:100%;
+}
+a {
+    outline:0;
+    text-decoration:none;
+}
+
 /*
 * Remove text-shadow in selection highlight: h5bp.com/i
 * These selection rule sets have to be separate.
@@ -40,23 +70,80 @@
     text-shadow: none;
 }
 
-
 body {
-
-    font-family: 'Fira Sans', 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;        
-    font-weight:300;
-    font-smooth:always;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -o-font-smoothing: antialiased;
-    -ms-font-smoothing: antialiased;
-    font-smoothing: antialiased;
     height:100%;
     width:100%;
+    
     overflow: auto;
     overflow-x: hidden;
     -ms-overflow-x: hidden;
 
     color:#6f6f6f;
+}
+
+/* Fix: Disable user selection */
+.disableSelection {
+    
+    cursor:default;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -khtml-user-drag: none;
+    -webkit-user-drag: none;
+    -o-user-drag: none;
+    -ms-user-drag: none;
+    user-drag: none;
+}
+
+/* Fonts */
+.font {
+    
+    font-weight:100;
+    font-style: normal;
+    font-smooth:always;
+    text-rendering: optimizeLegibility;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+
+    /* Typo cursor */
+    cursor:default;
+}
+.font.FiraSans {
+    font-family: 'Fira Sans', 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
+}
+.font.System {
+    font-family: Monaco, 'Liberation Mono', Courier, monospace, arial;
+}
+.font.light {
+    font-weight:100;
+}
+.font.regular {
+    font-weight: 200;
+}
+.font.bold, b, strong {
+    font-weight: 300;
+}
+.font.extrabold {
+    font-weight:400;
+}
+.hideText {
+    /* Move text far away */
+    font-size:0.01px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+
+    /* Force hiding */
+    color:transparent;
 }

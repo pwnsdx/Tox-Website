@@ -20,6 +20,29 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Avoid `console` errors in browsers that lack a console.
+(function() {
+    var method;
+    var noop = function () {};
+    var methods = [
+        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+        'timeStamp', 'trace', 'warn'
+    ];
+    var length = methods.length;
+    var console = (window.console = window.console || {});
+
+    while (length--) {
+        method = methods[length];
+
+        // Only stub undefined methods.
+        if (!console[method]) {
+            console[method] = noop;
+        }
+    }
+}());
+
 (function() {
     
     var Tox = {
@@ -37,31 +60,78 @@
         // Inject Scenes
         this.e(this.scenesMap.Header);
         
-        Tox.resize.addEvent(function(height, width) {
-            Tox.s('body header.toxHeader').css({height: height});
-        });
-        
         // Watch Resize Events
-        Tox.resize.watchEvents();
+        Tox.resize.run();
         
         return true;
     };
     
     Tox.scenesMap = {
         
-        Header: function() {
+        memory: {},
+        
+        Header: function()
+        {
             // Make timeline: https://github.com/janpaepke/ScrollMagic/blob/master/examples/advanced/svg_drawing.html#L80
             
-            var gBdyHeight = function() {
-                return Tox.resize.stats.h;
-            };
+            // If the user support csstransforms, show full-screen header
+            if(Modernizr.csstransforms) {
+                Tox.resize.addEvent(function(height, width) {
+                    Tox.s('body header.toxHeader').css({height: height});
+                });
+            }
                         
-            var tween = TweenMax.to('body header.toxHeader section', 1, {className: '+=active'});
+            // Show the download button details
+            Tox.s('header.toxHeader section div p.hide').removeClass('hide');
             
-            return new ScrollScene({duration: gBdyHeight}) // Duration can be a function (return resize event)
-            //.setPin('body header.toxHeader section')
-            .setTween(tween)
-            .addTo(Tox.d.scrollInstance);
+            // Detect OS for Download button...
+            
+            // Show Header
+            TweenMax.to([
+                'body header.toxHeader section'
+            ], .4, {delay: 1, opacity: 1, ease: Sine.easeInOut, onComplete: function() {
+            
+                // Create Tween
+                var Tween = TweenMax.to([
+                        'body header.toxHeader section',
+                        'body header.toxHeader section div',
+                        'body header.toxHeader footer'
+                    ], 1, {className: '+=active', ease: Sine.easeInOut});
+                    //TweenMax.to('body header.toxHeader section div', 1, {className: '+=active', ease: Sine.easeInOut})
+
+                // Create the new scene
+                var scrollScenes = [
+                    (new ScrollScene(
+                    {
+                        duration: function()
+                        {
+                            return Tox.resize.stats.h; // Refresh height of the scene dynamically
+                        }
+                    })
+                    //.setPin('body header.toxHeader section')
+                    .setTween(Tween)
+                    .addTo(Tox.d.scrollInstance))
+                ];
+                
+                // Unlock scrolling
+                Tox.s('body').removeClass('noScroll');
+            }});
+            
+            // Add scrolling arrow bouncing
+            (new TimelineMax({repeat:300, delay:1})
+            .add(TweenMax.to([
+                'header.toxHeader footer span'
+            ], 1, {y:'10', ease:Bounce.easeOut}))
+            .add(TweenMax.to([
+                'header.toxHeader footer span'
+            ], 1, {delay: 2, y:0, ease:Sine.easeOut})));
+            
+            return scrollScenes;
+        },
+        
+        Footer : function()
+        {
+            return true;
         }
     };
     
@@ -69,12 +139,13 @@
     Tox.resize = {
         
         memory: [],
-        stats: {
+        stats:
+        {
             h: Tox.s('body').outerHeight(),
             w: Tox.s('body').outerWidth()
         },
-        addEvent: function(execCallback) {
-            
+        addEvent: function(execCallback)
+        {
             // Push the callback to memory
             this.memory.push(execCallback);
             
@@ -83,14 +154,17 @@
             
             return this.memory.length;
         },
-        removeEvent: function(id) {
+        removeEvent: function(id)
+        {
             this.memory[id] = false;
         },
         
-        watchEvents: function() {
-            
-            var execCallbacks = function(h, w) {       
-                for(var i = 0, len = Tox.resize.memory.length; i < len; i++) {
+        run: function()
+        {
+            var execCallbacks = function(h, w)
+            {
+                for(var i = 0, len = Tox.resize.memory.length; i < len; i++)
+                {
                     Tox.resize.memory[i](h, w);
                 }
             };
