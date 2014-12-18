@@ -114,7 +114,7 @@
                 ];
                 
                 // Unlock scrolling
-                Tox.s('body').removeClass('noScroll');
+                Tox.s('body').css({'overflow': 'auto'});
             }});
             
             // Add scrolling arrow bouncing
