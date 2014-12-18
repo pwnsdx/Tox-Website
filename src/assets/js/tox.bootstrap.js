@@ -74,10 +74,13 @@
         {
             // Make timeline: https://github.com/janpaepke/ScrollMagic/blob/master/examples/advanced/svg_drawing.html#L80
             
+            // Get right background density and load it
+            Tox.utils.injectBackground('header.toxHeader section');
+            
             // If the user support csstransforms, show full-screen header
             if(Modernizr.csstransforms) {
                 Tox.resize.addEvent(function(height, width) {
-                    Tox.s('body header.toxHeader').css({height: height});
+                    Tox.s('header.toxHeader').css({height: height});
                 });
             }
                         
