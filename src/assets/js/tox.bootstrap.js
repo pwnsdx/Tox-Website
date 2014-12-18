@@ -144,6 +144,26 @@
             {
                 // Get right background density and load it
                 Tox.utils.injectBackground('aside.tObject section.preview', 'aside.tObject section.preview div');
+                
+                // Create Tween
+                var Tween = TweenMax.to([
+                    'aside.tObject section.preview',
+                    'aside.tObject section.preview div'
+                ], 1, {
+                    className: '+=tween',
+                    ease: Sine.easeInOut
+                });
+                
+                // Create the new scene
+                var scrollScenes = [
+                    (new ScrollScene(
+                    {
+                        duration: 1200
+                    })
+                    //.setPin('aside.tObject section.preview')
+                    .setTween(Tween)
+                    .addTo(Tox.d.scrollInstance))
+                ];
             }
         },
         
