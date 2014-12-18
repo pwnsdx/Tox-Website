@@ -224,8 +224,24 @@ aside.tObject.dark {
 }
 
 aside.tObject section.preview {
-    height:500px;
+    height:1000px;
     width:100%;
+    margin-top:50px;
 }
-
+aside.tObject section.preview div {
+    height:500px;
+    background-repeat:no-repeat;
+    position:static;
+    display:block;
+}
+aside.tObject section.preview div:first-child {
+    background-position:top left;
+    width:952px;
+    float:left;
+}
+aside.tObject section.preview div:last-child {
+    background-position:top right;
+    width:343px;
+    float:right;
+}
 /* FOOTER */
