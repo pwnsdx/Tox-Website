@@ -86,6 +86,12 @@
             
             // Lock scrolling
             Tox.scrollManager.Lock();
+            TweenLite.to(window, 0.1, {
+                scrollTo: {
+                    x:0,
+                    y: 0
+                }
+            });
             
             // Get right background density and load it
             Tox.utils.injectBackground('header.toxHeader section');
@@ -102,9 +108,11 @@
             // Detect OS for Download button...
             
             // Show Header
-            TweenMax.to([
-                'header.toxHeader section'
-            ], .4, {delay: 1, opacity: 1, ease: Sine.easeInOut, onComplete: function() {
+            TweenMax.to('header.toxHeader section', .4, {
+                delay: 1,
+                opacity: 1,
+                ease: Sine.easeInOut,
+                onComplete: function() {
             
                 // Create Tween
                 var Tween = TweenMax.to([
@@ -119,8 +127,8 @@
 
                 // Create the new scene
                 var scrollScenes = [
-                    (new ScrollScene(
-                    {
+                    (new ScrollScene({
+                        
                         duration: function()
                         {
                             return Tox.resize.stats.h; // Refresh height of the scene dynamically
@@ -137,7 +145,7 @@
             .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:'10', ease:Bounce.easeOut}))
             .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
             
-            // Handle scrolling arrow
+            // Handle arrow scrolling
             Tox.s(Tox.d.cssPaths.scrollingArrow).on(Tox.d.events.Click, function(e) {
                 e.preventDefault();
                 
