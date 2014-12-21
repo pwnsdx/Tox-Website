@@ -321,3 +321,7 @@ aside.tObject section.preview div.tween:last-child {
 }
 
 /* FOOTER */
+
+
+/* Little Hacks to prevent the page from being displayed until the page loaded */
+body { display:block; }
