@@ -58,15 +58,9 @@ header.toxHeader section nav ul li:last-child {
 }
 header.toxHeader section nav ul li a {
     color:#d7d1d1;
-    
-    -webkit-transition:color .2s ease-in-out;
-    -moz-transition:color .2s ease-in-out;
-    -o-transition:color .2s ease-in-out;
-    -ms-transition:color .2s ease-in-out;
-    transition:color .2s ease-in-out;
 }
 header.toxHeader section nav ul li a:hover {
-    color: #fff;
+    color:#fff;
 }
 header.toxHeader section nav ul li a span {
     vertical-align:middle;
