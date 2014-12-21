@@ -54,7 +54,7 @@
             pathToAssets: 'assets/images/',
             events: {
                 Click: (Modernizr.touch ? 'touchstart' : 'click'),
-                Scroll: (Modernizr.touch ? 'touchmove' : 'mousewheel')
+                Scroll: (Modernizr.touch ? 'touchmove' : 'DOMMouseScroll mousewheel')
             },
             cssPaths: {
                 scrollingArrow: 'header.toxHeader footer a'
