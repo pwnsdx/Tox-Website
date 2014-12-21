@@ -1,16 +1,4 @@
-html {
-    height: 100%;
-    width: 100%;
-    
-    overflow: hidden;
-}
-
 body {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    padding-right: 15px; /* Increase this value for cross-browser compatibility */
-    
     color:#d7d1d1;
     overflow: hidden;
 }
