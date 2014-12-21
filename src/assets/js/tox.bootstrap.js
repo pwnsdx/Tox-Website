@@ -52,7 +52,10 @@
         d: { // Defines
             scrollInstance: new ScrollMagic(),
             pathToAssets: 'assets/images/',
-            clickEvent: (Modernizr.touch ? 'touchstart' : 'click'),
+            events: {
+                Click: (Modernizr.touch ? 'touchstart' : 'click'),
+                Scroll: (Modernizr.touch ? 'touchmove' : 'mousewheel')
+            },
             cssPaths: {
                 scrollingArrow: 'header.toxHeader footer a'
             }
@@ -61,7 +64,7 @@
         
     // Run the Bootstrap
     Tox.Bootstrap = function()
-    {
+    {        
         // Inject Scenes
         this.e(this.scenesMap.Header);
         this.e(this.scenesMap.Content.One);
@@ -80,6 +83,9 @@
         Header: function()
         {
             // Make timeline: https://github.com/janpaepke/ScrollMagic/blob/master/examples/advanced/svg_drawing.html#L80
+            
+            // Lock scrolling
+            Tox.scrollManager.Lock();
             
             // Get right background density and load it
             Tox.utils.injectBackground('header.toxHeader section');
@@ -124,9 +130,6 @@
                     .setTween(Tween)
                     .addTo(Tox.d.scrollInstance))
                 ];
-                
-                // Unlock scrolling
-                Tox.s('body').css({'overflow': 'auto'});
             }});
             
             // Add scrolling arrow bouncing
@@ -135,9 +138,14 @@
             .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
             
             // Handle scrolling arrow
-            Tox.s(Tox.d.cssPaths.scrollingArrow).on(Tox.d.clickEvent, function(e) {
+            Tox.s(Tox.d.cssPaths.scrollingArrow).on(Tox.d.events.Click, function(e) {
                 e.preventDefault();
+                
+                // Scroll to presentation
                 TweenLite.to(window, 1, {scrollTo:{x:0, y: Tox.resize.stats.h}});
+                
+                // Unlock scrolling
+                Tox.scrollManager.Unlock();
             });
             
             return true;
@@ -172,6 +180,25 @@
         Footer: function()
         {
             return true;
+        }
+    };
+    
+    
+    // Unlock / Lock scrolling
+    Tox.scrollManager = {
+      
+        Lock: function() {
+            Tox.s('body').css({'overflow': 'hidden'});
+            Tox.s(document).on(Tox.d.events.Scroll, function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                return false;
+            });
+        },
+        
+        Unlock: function() {
+            Tox.s('body').css({'overflow': 'auto'});
+            Tox.s(document).off(Tox.d.events.Scroll);
         }
     };
     
