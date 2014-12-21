@@ -51,7 +51,11 @@
         g: function(g) { return Foundation.utils.random_str(g); }, // Random string generator
         d: { // Defines
             scrollInstance: new ScrollMagic(),
-            pathToAssets: 'assets/images/'
+            pathToAssets: 'assets/images/',
+            clickEvent: (Modernizr.touch ? 'touchstart' : 'click'),
+            cssPaths: {
+                scrollingArrow: 'header.toxHeader footer a'
+            }
         }
     };
         
@@ -89,7 +93,6 @@
                         
             // Show the download button details
             Tox.s('header.toxHeader section div p.hide').removeClass('hide');
-            
             // Detect OS for Download button...
             
             // Show Header
@@ -128,12 +131,14 @@
             
             // Add scrolling arrow bouncing
             (new TimelineMax({repeat:300, delay:0.5})
-            .add(TweenMax.to([
-                'header.toxHeader footer span'
-            ], 1, {y:'10', ease:Bounce.easeOut}))
-            .add(TweenMax.to([
-                'header.toxHeader footer span'
-            ], 1, {delay: 2, y:0, ease:Sine.easeOut})));
+            .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:'10', ease:Bounce.easeOut}))
+            .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
+            
+            // Handle scrolling arrow
+            Tox.s(Tox.d.cssPaths.scrollingArrow).on(Tox.d.clickEvent, function(e) {
+                e.preventDefault();
+                TweenLite.to(window, 1, {scrollTo:{x:0, y: Tox.resize.stats.h}});
+            });
             
             return true;
         },
@@ -155,15 +160,12 @@
                 });
                 
                 // Create the new scene
-                var scrollScenes = [
-                    (new ScrollScene(
-                    {
-                        duration: 1200
-                    })
-                    //.setPin('aside.tObject section.preview')
-                    .setTween(Tween)
-                    .addTo(Tox.d.scrollInstance))
-                ];
+                var scrollScenes = (new ScrollScene({
+                    duration: 1200
+                })
+                //.setPin('aside.tObject section.preview')
+                .setTween(Tween)
+                .addTo(Tox.d.scrollInstance));
             }
         },
         
