@@ -181,8 +181,12 @@ html.no-js header.toxHeader footer {
 header.toxHeader footer.tween {
     height:0px;
 }
-header.toxHeader footer span {
+header.toxHeader footer a {
     font-size:50px;
+    color:#d7d1d1;
+}
+header.toxHeader footer a:hover {
+    color:#fff;
 }
 
 /* CONTENT */
