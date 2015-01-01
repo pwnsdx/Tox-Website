@@ -1,6 +1,9 @@
 body {
     color:#d7d1d1;
     overflow: hidden;
+    
+    outline:0;
+    border:0;
 }
 html.no-js body {
     overflow:auto;
@@ -310,4 +313,4 @@ aside.tObject section.preview div.tween:last-child {
 
 
 /* Little Hacks to prevent the page from being displayed until the page loaded */
-body { display:block; }
+body { display:block; visibility: visible; }
