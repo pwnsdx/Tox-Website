@@ -1,6 +1,6 @@
-aside.tObject.downloadNow table tr:first-child td span {
+aside.tObject.downloadNow table tr:first-child td span,
+header.toxHeader section div p a.button span {
     background:url(../images/Systems.png);
-    background-size:115px 33px;
 }
 aside.tObject section.preview div {
     background:url(../images/Windows-Sprite.png);

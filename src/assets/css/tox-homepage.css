@@ -273,8 +273,15 @@ aside.tObject.downloadNow table {
 
     text-shadow: none;
     -webkit-text-shadow: none;
+    -moz-text-shadow: none;
     -o-text-shadow: none;
     -ms-text-shadow: none;
+    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
 
     border:0;
 }
@@ -298,7 +305,9 @@ aside.tObject.downloadNow table tr td {
 aside.tObject.downloadNow table tr td:first-child {
     font-size:20px;
 }
-
+aside.tObject.downloadNow table tr td:last-child {
+    border-right: 0;
+}
 aside.tObject.downloadNow table tr td a {
     color:#e5554e;
 }
@@ -338,11 +347,10 @@ aside.tObject.downloadNow table tr:first-child {
     background-color:#e5554e;
 
     border-bottom:1px solid #ce4c46;
-    border-top:1px solid #e56f69;
 }
 aside.tObject.downloadNow table tr:first-child td {
     background-color:#e5554e;
-
+    
     border-right:1px solid #ce4c46;
 
     color:#fafbf9;
@@ -356,25 +364,71 @@ aside.tObject.downloadNow table tr:first-child td {
     -o-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
     -ms-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
 }
-aside.tObject.downloadNow table tr:first-child td span {
-    height:33px;
+aside.tObject.downloadNow table tr:first-child td:first-child {
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+}
+aside.tObject.downloadNow table tr:first-child td:last-child {
+    border-right: 0;
+    
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+}
+aside.tObject.downloadNow table tr:first-child td span,
+header.toxHeader section div p a.button span {
     display:inline-block;
     vertical-align:text-bottom;
     margin-right:5px;
 }
+
+aside.tObject.downloadNow table tr:first-child td span {
+    height:33px;
+}
+header.toxHeader section div p a.button span {
+    height:24.75px;
+}
+
 aside.tObject.downloadNow table tr:first-child td span.win {
     width:31px;
+    background-size:115px 33px;
 }
+header.toxHeader section div p a.button span.win {
+    width:24px;
+    background-size:86.25px 24.75px;
+}
+
 aside.tObject.downloadNow table tr:first-child td span.osx {
     width:26px;
+    background-size:115px 33px;
     background-position:83px;
 }
+header.toxHeader section div p a.button span.osx {
+    width:19px;
+    background-size:86.25px 24.75px;
+    background-position:63px;
+}
+
 aside.tObject.downloadNow table tr:first-child td span.nux {
     width:28px;
+    background-size:115px 33px;
     background-position:58px;
 }
+header.toxHeader section div p a.button span.nux {
+    width:20px;
+    background-size:86.25px 24.75px;
+    background-position:43px;
+}
+
 aside.tObject.downloadNow table tr:first-child td span.droid {
-    width:31px;
+    width:30px;
+    background-size:115px 33px;
+    background-position:right;
+}
+header.toxHeader section div p a.button span.droid {
+    width:22.1px;
+    background-size:86.25px 24.75px;
     background-position:right;
 }
 
