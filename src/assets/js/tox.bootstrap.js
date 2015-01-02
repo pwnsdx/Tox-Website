@@ -60,14 +60,18 @@
             cssPaths: {
                 scrollingArrow: 'header.toxHeader footer a',
                 downloadLinuxClientsSelection: 'aside.tObject.downloadNow table tr td input',
-                downloadButtons: 'header.toxHeader section div p a.button, header.toxHeader section div p:last-child'
+                downloadButtons: 'header.toxHeader section div p a.button, header.toxHeader section div p:last-child a'
             }
         }
     };
-        
+    
     // Run the Bootstrap
     Tox.Bootstrap = function()
     {
+        // Start device detection
+        Detectizr.detect({detectScreen:false});
+        //alert(Detectizr.os.name);
+        //alert(Detectizr.os.major);
         
         // Load CSS for the pixeldensity
         switch(Tox.utils.devicePixelRatio()) {
@@ -80,6 +84,8 @@
             default: // 4K/iMac Retina 5K/Apple iPhone 6 Plus
             break;
         }
+        
+        
         
         // Inject Scenes
         this.e(this.scenesMap.Header);

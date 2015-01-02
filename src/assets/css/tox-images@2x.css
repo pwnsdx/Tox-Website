@@ -1,4 +1,5 @@
-aside.tObject.downloadNow table tr:first-child td span {
+aside.tObject.downloadNow table tr:first-child td span,
+header.toxHeader section div p a.button span {
     background:url(../images/Systems@2x.png);
 }
 aside.tObject section.preview {
