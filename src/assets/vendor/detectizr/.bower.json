@@ -1,0 +1,44 @@
+{
+  "name": "detectizr",
+  "version": "2.0.0",
+  "main": "dist/detectizr.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "test",
+    "*.md",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "modernizr": "2.7.1"
+  },
+  "devDependencies": {
+    "requirejs": "2.1.11",
+    "qunit": "1.14.0"
+  },
+  "keywords": [
+    "detect",
+    "determine",
+    "browser",
+    "device",
+    "mobile",
+    "desktop",
+    "tablet",
+    "os",
+    "modernizr",
+    "javascript",
+    "js"
+  ],
+  "homepage": "https://github.com/barisaydinoglu/Detectizr",
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "d18dd6121a7c80c448b098638929e6e3bf6f460b"
+  },
+  "_source": "git://github.com/barisaydinoglu/Detectizr.git",
+  "_target": "~2.0.0",
+  "_originalSource": "detectizr",
+  "_direct": true
+}
