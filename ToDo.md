@@ -1,8 +1,8 @@
 À FAIRE
 
-- Ajouter plugin détection OS (jQuery) compatible Bower
-- Ajouter le logo de l'OS à coté du bouton de téléchargement
-- Fixer les problèmes quand le javascript est désactivé
+- Détecter l'OS par sa version (par ex dire que Tox n'est pas disponible sous Leopard)
+- Proposer le contenu adapté à l'OS (Windows = Bouton de téléchargement Windows, screenshots Windows etc)
+- Trouver un moyen de compresser tox-images@2x.css et tox-images.css sans les intégrers dans la homepage
 - Fixer les problèmes de responsive
 - Terminer la page d'accueil
 
