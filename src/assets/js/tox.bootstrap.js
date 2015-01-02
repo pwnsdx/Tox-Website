@@ -113,32 +113,33 @@
                 opacity: 1,
                 ease: Sine.easeInOut,
                 onComplete: function() {
-            
-                // Create Tween
-                var Tween = TweenMax.to([
-                    'body header.toxHeader section',
-                    'body header.toxHeader section div',
-                    'body header.toxHeader footer'
-                ], 1, {
-                    opacity:0.3,
-                    className: '+=tween',
-                    ease: Sine.easeInOut
-                });
 
-                // Create the new scene
-                var scrollScenes = [
-                    (new ScrollScene({
-                        
-                        duration: function()
-                        {
-                            return Tox.resize.stats.h; // Refresh height of the scene dynamically
-                        }
-                    })
-                    //.setPin('body header.toxHeader section')
-                    .setTween(Tween)
-                    .addTo(Tox.d.scrollInstance))
-                ];
-            }});
+                    // Create Tween
+                    var Tween = TweenMax.to([
+                        'body header.toxHeader section',
+                        'body header.toxHeader section div',
+                        'body header.toxHeader footer'
+                    ], 1, {
+                        opacity:0.3,
+                        className: '+=tween',
+                        ease: Sine.easeInOut
+                    });
+
+                    // Create the new scene
+                    var scrollScenes = [
+                        (new ScrollScene({
+
+                            duration: function()
+                            {
+                                return Tox.resize.stats.h; // Refresh height of the scene dynamically
+                            }
+                        })
+                        //.setPin('body header.toxHeader section')
+                        .setTween(Tween)
+                        .addTo(Tox.d.scrollInstance))
+                    ];
+                }
+            });
             
             // Add scrolling arrow bouncing
             (new TimelineMax({repeat:300, delay:0.5})
