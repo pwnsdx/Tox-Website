@@ -25,6 +25,8 @@ header.toxHeader section {
     width:100%;
 
     opacity:0;
+    
+    background-image:url(../images/Background.png);
 
     background-repeat:no-repeat;
 
@@ -35,7 +37,6 @@ header.toxHeader section {
 }
 html.no-js header.toxHeader section {
     opacity:1;
-    background-image:url(../images/Background.png);
 }
 header.toxHeader section.tween {
 
@@ -280,7 +281,7 @@ aside.tObject.downloadNow table {
 aside.tObject.downloadNow table tr {
     border-bottom:1px solid #e5e5e5;
 
-    height:60px;
+    height:63px;
 }
 aside.tObject.downloadNow table tr td {
     width:20%;
@@ -349,6 +350,32 @@ aside.tObject.downloadNow table tr:first-child td {
     text-transform: uppercase;
 
     font-size:18px;
+    
+    text-shadow: 0px 1px 0px rgba(0,0,0,.15);
+    -webkit-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
+    -o-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
+    -ms-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
+}
+aside.tObject.downloadNow table tr:first-child td span {
+    height:33px;
+    display:inline-block;
+    vertical-align:text-bottom;
+    margin-right:5px;
+}
+aside.tObject.downloadNow table tr:first-child td span.win {
+    width:31px;
+}
+aside.tObject.downloadNow table tr:first-child td span.osx {
+    width:26px;
+    background-position:83px;
+}
+aside.tObject.downloadNow table tr:first-child td span.nux {
+    width:28px;
+    background-position:58px;
+}
+aside.tObject.downloadNow table tr:first-child td span.droid {
+    width:31px;
+    background-position:right;
 }
 
 aside.tObject section.preview {
