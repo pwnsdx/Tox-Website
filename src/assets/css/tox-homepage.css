@@ -1,7 +1,7 @@
 body {
     color:#d7d1d1;
     overflow: hidden;
-    
+
     outline:0;
     border:0;
 }
@@ -12,9 +12,9 @@ html.no-js body {
 /* HEADER */
 header.toxHeader {
     width:100%;
-    
+
     background-color:#000;
-    
+
     text-shadow: 0px 1px 0px rgba(0,0,0,.6);
     -webkit-text-shadow: 0px 1px 0px rgba(0,0,0,.6);
     -o-text-shadow: 0px 1px 0px rgba(0,0,0,.6);
@@ -23,11 +23,11 @@ header.toxHeader {
 header.toxHeader section {
     height:100%;
     width:100%;
-    
+
     opacity:0;
-    
+
     background-repeat:no-repeat;
-    
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -43,7 +43,7 @@ header.toxHeader section.tween {
 
 header.toxHeader section nav {
     width:100%;
-    
+
     padding-top:25px;
     font-size:16px;
 }
@@ -72,7 +72,7 @@ header.toxHeader section div {
     width:100%;
     margin:0;
     padding:0;
-    
+
     color:#d7d1d1;
 }
 html.no-js header.toxHeader section div {
@@ -82,7 +82,7 @@ html.no-js header.toxHeader section div {
 html.csstransforms header.toxHeader section div {
     margin-top:0;
     margin-bottom:0;
-    
+
     position: absolute;
     left: 50%;
     top: 50%;
@@ -102,9 +102,9 @@ html.csstransforms header.toxHeader section div.tween {
 }
 header.toxHeader section div span.logo {
     display:block;
-    
+
     height:99px;
-    
+
     background-image:url(../images/Logo.png);
     background-size:81px 99px;
     background-repeat:no-repeat;
@@ -119,13 +119,13 @@ header.toxHeader section div b {
 header.toxHeader section div h1 {
     margin:0;
     padding:0;
-    
+
     color:inherit;
     text-align:center;
-    
+
     padding-top:10px;
     padding-bottom:10px;
-    
+
     font-size:60px;
 }
 header.toxHeader section div p {
@@ -137,7 +137,7 @@ header.toxHeader section div p a {
 }
 header.toxHeader section div p a.button {
     margin-bottom:0;
-    
+
     color:#faf5f5;
     background-color:#fc605b;
     font-size:18px;
@@ -145,7 +145,7 @@ header.toxHeader section div p a.button {
     -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.2);
     -moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.2);
     box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.2);
-    
+
     text-shadow: 0px 1px 0px rgba(0,0,0,.15);
     -webkit-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
     -o-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
@@ -160,14 +160,14 @@ header.toxHeader section div p:last-child {
 header.toxHeader footer {
     position:absolute;
     bottom:0;
-    
+
     height:80px;
-    
+
     padding-bottom:0px;
     width:100%;
-    
+
     overflow:hidden;
-    
+
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
     background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
@@ -196,7 +196,7 @@ header.toxHeader footer a:hover {
 aside.tObject {
     min-height:200px;
     width:100%;
-    
+
     background-repeat:repeat;
 }
 aside.tObject aside {
@@ -212,7 +212,7 @@ aside.tObject h3 {
 aside.tObject.light {
     background-color:#fff;
     background-image:url(../images/Pattern-Light.png);
-    
+
     text-shadow: 0px 1px 0px #fff;
     -webkit-text-shadow: 0px 1px 0px #fff;
     -o-text-shadow: 0px 1px 0px #fff;
@@ -243,7 +243,7 @@ aside.tObject.light h3 {
 aside.tObject.dark {
     background-color:#000;
     background-image:url(../images/Pattern-Dark.png);
-    
+
     text-shadow: 0px 1px 0px #000;
     -webkit-text-shadow: 0px 1px 0px #000;
     -o-text-shadow: 0px 1px 0px #000;
@@ -269,29 +269,29 @@ aside.tObject.downloadNow h3 {
 }
 aside.tObject.downloadNow table {
     background:#fff;
-    
+
     text-shadow: none;
     -webkit-text-shadow: none;
     -o-text-shadow: none;
     -ms-text-shadow: none;
-    
+
     border:0;
 }
 aside.tObject.downloadNow table tr {
     border-bottom:1px solid #e5e5e5;
-    
+
     height:60px;
 }
 aside.tObject.downloadNow table tr td {
     width:20%;
-    
+
     background-color:#fff;
-    
+
     text-align: center;
     color:#e5554e;
-    
+
     font-size:16px;
-        
+
     border-right: 1px solid #e5e5e5;
 }
 aside.tObject.downloadNow table tr td:first-child {
@@ -308,38 +308,55 @@ aside.tObject.downloadNow table tr td span {
     font-size:18px;
 }
 aside.tObject.downloadNow table tr td span.pe-7s-close-circle {
-    color:#888686;
+    color:#b1b1b1;
     font-size:22px;
+}
+aside.tObject.downloadNow table tr td input {
+    font-size: 16px;
+    display: block;
+
+    text-align: center;
+    
+    color:#e5554e;
+    
+    cursor: text;
+
+    background:none;
+    box-shadow: none;
+
+    border: 0;
+    outline:0;
+    padding:0;
+    margin:0;
 }
 
 /* HEADER TABLE SPEC */
 aside.tObject.downloadNow table tr:first-child {
     height:70px;
-    
+
     background-color:#e5554e;
-    
+
     border-bottom:1px solid #ce4c46;
-    
-    
+    border-top:1px solid #e56f69;
 }
 aside.tObject.downloadNow table tr:first-child td {
     background-color:#e5554e;
-    
+
     border-right:1px solid #ce4c46;
-    
+
     color:#fafbf9;
-    
+
     text-transform: uppercase;
-    
+
     font-size:18px;
 }
 
 aside.tObject section.preview {
     height:500px;
     margin-top:50px;
-    
+
     position: relative;
-    
+
     background-position:0 top;
 }
 aside.tObject section.preview.tween {
@@ -348,19 +365,19 @@ aside.tObject section.preview.tween {
 aside.tObject section.preview div {
     height:500px;
     position:absolute;
-    
+
     background-repeat:no-repeat;
-    
+
     display:block;
-    
+
     border-top:1px solid #d2d2d2;
     border-left:1px solid #d2d2d2;
     border-right:1px solid #d2d2d2;
-    
+
     -webkit-box-shadow: 0px 20px 80px -10px rgba(0,0,0,.3);
     -moz-box-shadow: 0px 20px 80px -10px rgba(0,0,0,.3);
     box-shadow: 0px 20px 80px -10px rgba(0,0,0,.3);
-    
+
     -webkit-border-top-left-radius: 4px;
     -webkit-border-top-right-radius: 4px;
     -moz-border-radius-topleft: 4px;
@@ -371,7 +388,7 @@ aside.tObject section.preview div {
 aside.tObject section.preview div:first-child {
     background-position:top left;
     width:952px;
-    
+
     left: 0;
     margin-left:-150px;
 }
@@ -381,7 +398,7 @@ aside.tObject section.preview div.tween:first-child {
 aside.tObject section.preview div:last-child {
     background-position:top right;
     width:343px;
-    
+
     right: 0;
     margin-right:-150px;
 }
@@ -392,12 +409,12 @@ aside.tObject section.preview div.tween:last-child {
 /* FOOTER */
 footer.toxFooter {
     color:#727272;
-    
+
     padding-top:30px;
     padding-bottom:40px;
-    
+
     font-size:18px;
-    
+
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC42NSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
     background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
