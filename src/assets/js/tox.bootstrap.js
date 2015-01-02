@@ -57,7 +57,8 @@
                 Scroll: (Modernizr.touch ? 'touchmove' : 'DOMMouseScroll mousewheel')
             },
             cssPaths: {
-                scrollingArrow: 'header.toxHeader footer a'
+                scrollingArrow: 'header.toxHeader footer a',
+                downloadLinuxClientsSelection: 'aside.tObject.downloadNow table tr td input'
             }
         }
     };
@@ -188,6 +189,11 @@
         
         Footer: function()
         {
+            // Handle selection for Linux text
+            Tox.s(Tox.d.cssPaths.downloadLinuxClientsSelection).on(Tox.d.events.Click, function(e) {
+                Tox.s(this).select();
+            });
+            
             return true;
         }
     };
@@ -196,7 +202,8 @@
     // Unlock / Lock scrolling
     Tox.scrollManager = {
       
-        Lock: function() {
+        Lock: function()
+        {
             Tox.s('body').css({'overflow': 'hidden'});
             Tox.s(document).on(Tox.d.events.Scroll, function(e) {
                 e.stopPropagation();
@@ -205,7 +212,8 @@
             });
         },
         
-        Unlock: function() {
+        Unlock: function()
+        {
             Tox.s('body').css({'overflow': 'auto'});
             Tox.s(document).off(Tox.d.events.Scroll);
         }
