@@ -49,8 +49,8 @@
         s: Foundation.utils.S, // Main selector
         e: function(e) { return e(); }, // Execute a function
         g: function(g) { return Foundation.utils.random_str(g); }, // Random string generator
-        c: {
-        }, // Cache
+        c: { // Cache
+        },
         d: { // Defines
             scrollInstance: (new ScrollMagic()),
             events: {

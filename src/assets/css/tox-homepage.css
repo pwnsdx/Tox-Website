@@ -68,6 +68,7 @@ header.toxHeader section nav ul li a:hover {
 }
 header.toxHeader section nav ul li a span {
     vertical-align:middle;
+    margin-right:5px;
 }
 header.toxHeader section div {
     width:100%;
