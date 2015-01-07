@@ -508,5 +508,5 @@ footer.toxFooter {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-8 */
 }
 
-/* Little Hacks to prevent the page from being displayed until the page loaded */
+/* Little Hacks to prevent the page from being displayed until it has been loaded */
 body { display:block; visibility: visible; }
