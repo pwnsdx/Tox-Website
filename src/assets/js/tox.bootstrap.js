@@ -156,7 +156,7 @@
             
             // Add scrolling arrow bouncing
             (new TimelineMax({repeat:300, delay:0.5})
-            .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:'10', ease:Bounce.easeOut}))
+            .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:10, ease:Bounce.easeOut}))
             .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
             
             // Handle arrow scrolling
