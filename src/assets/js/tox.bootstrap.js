@@ -58,7 +58,7 @@
                 Scroll: (Modernizr.touch ? 'touchmove' : 'DOMMouseScroll mousewheel')
             },
             cssPaths: {
-                scrollingArrow: 'header.toxHeader footer a',
+                scrollingArrow: 'header.toxHeader aside a',
                 downloadLinuxClientsSelection: 'aside.tObject.downloadNow table tr td input',
                 downloadButtons: 'header.toxHeader section div p a.button, header.toxHeader section div p:last-child a'
             }
