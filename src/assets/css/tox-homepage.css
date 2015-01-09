@@ -212,7 +212,6 @@ aside.tObject h3 {
 
 aside.tObject.light {
     background-color:#fff;
-    background-image:url(../images/Pattern-Light.png);
 
     text-shadow: 0px 1px 0px #fff;
     -webkit-text-shadow: 0px 1px 0px #fff;
@@ -243,7 +242,6 @@ aside.tObject.light h3 {
 
 aside.tObject.dark {
     background-color:#000;
-    background-image:url(../images/Pattern-Dark.png);
 
     text-shadow: 0px 1px 0px #000;
     -webkit-text-shadow: 0px 1px 0px #000;
