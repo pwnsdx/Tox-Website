@@ -1,3 +1,6 @@
+header.toxHeader section div span.logo {
+    background-image:url(../images/Logo@2x.png);
+}
 aside.tObject.downloadNow table tr:first-child td span,
 header.toxHeader section div p a.button span {
     background:url(../images/Systems@2x.png);
