@@ -8,3 +8,9 @@ header.toxHeader section div p a.button span {
 aside.tObject section.preview {
     background:url(../images/Windows-Sprite@2x.png);
 }
+aside.tObject.light {
+    background-image:url(../images/Pattern-Light.png);
+}
+aside.tObject.dark {
+    background-image:url(../images/Pattern-Dark.png);
+}
