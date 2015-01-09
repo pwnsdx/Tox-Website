@@ -1,5 +1,6 @@
 À FAIRE
 
+- Add screen unlocking by the keyboard arrow (down)
 - Détecter l'OS par sa version (par ex dire que Tox n'est pas disponible sous Leopard)
 - Proposer le contenu adapté à l'OS (Windows = Bouton de téléchargement Windows, screenshots Windows etc)
 - Trouver un moyen de compresser tox-images@2x.css et tox-images.css sans les intégrers dans la homepage
