@@ -129,6 +129,12 @@ header.toxHeader section div h1 {
 
     font-size:60px;
 }
+header.toxHeader section div h1.show-for-medium-only {
+    font-size:48px;
+}
+header.toxHeader section div h1.show-for-small-only {
+    font-size:36px;
+}
 header.toxHeader section div p {
     text-align:center;
     font-size:20px;
