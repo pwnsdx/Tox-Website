@@ -48,9 +48,10 @@ module.exports = function(grunt) {
         },
         imageEmbed: {
             developmentToProduction: {
-                src: [ $production + 'assets/css/tox-homepage.css' ],
-                dest: $production + 'assets/css/tox-homepage.css',
+                src: [ $production + 'assets/css/tox-images.css' ],
+                dest: $production + 'assets/css/tox-images.css',
                 options: {
+                    maxImageSize: 0,
                     deleteAfterEncoding: true
                 }
             }
