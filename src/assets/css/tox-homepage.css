@@ -100,7 +100,7 @@ html.csstransforms header.toxHeader section div {
     -ms-transform: translate(-50%, -50%);
 }
 html.csstransforms header.toxHeader section div.tween {
-    top: 80%;
+    top:80%;
 }
 header.toxHeader section div span.logo {
     display:block;
@@ -345,14 +345,14 @@ aside.tObject.downloadNow table tr td input {
 }
 
 /* HEADER TABLE SPEC */
-aside.tObject.downloadNow table tr:first-child {
+aside.tObject.downloadNow table tr.headTable {
     height:70px;
 
     background-color:#e5554e;
 
     border-bottom:1px solid #ce4c46;
 }
-aside.tObject.downloadNow table tr:first-child td {
+aside.tObject.downloadNow table tr.headTable td {
     background-color:#e5554e;
     
     border-right:1px solid #ce4c46;
@@ -368,33 +368,37 @@ aside.tObject.downloadNow table tr:first-child td {
     -o-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
     -ms-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
 }
-aside.tObject.downloadNow table tr:first-child td:first-child {
+aside.tObject.downloadNow table tr.headTable td p {
+    display:inline;
+    font-size:18px;
+}
+aside.tObject.downloadNow table tr.headTable td:first-child {
     -webkit-border-top-left-radius: 5px;
     -moz-border-radius-topleft: 5px;
     border-top-left-radius: 5px;
 }
-aside.tObject.downloadNow table tr:first-child td:last-child {
+aside.tObject.downloadNow table tr.headTable td:last-child {
     border-right: 0;
     
     -webkit-border-top-right-radius: 5px;
     -moz-border-radius-topright: 5px;
     border-top-right-radius: 5px;
 }
-aside.tObject.downloadNow table tr:first-child td span,
+aside.tObject.downloadNow table tr.headTable td span,
 header.toxHeader section div p a.button span {
     display:inline-block;
     vertical-align:text-bottom;
     margin-right:5px;
 }
 
-aside.tObject.downloadNow table tr:first-child td span {
+aside.tObject.downloadNow table tr.headTable td span {
     height:33px;
 }
 header.toxHeader section div p a.button span {
     height:24.75px;
 }
 
-aside.tObject.downloadNow table tr:first-child td span.win {
+aside.tObject.downloadNow table tr.headTable td span.win {
     width:31px;
     background-size:115px 33px;
 }
@@ -403,7 +407,7 @@ header.toxHeader section div p a.button span.win {
     background-size:86.25px 24.75px;
 }
 
-aside.tObject.downloadNow table tr:first-child td span.osx {
+aside.tObject.downloadNow table tr.headTable td span.osx {
     width:26px;
     background-size:115px 33px;
     background-position:83px;
@@ -414,7 +418,7 @@ header.toxHeader section div p a.button span.osx {
     background-position:63px;
 }
 
-aside.tObject.downloadNow table tr:first-child td span.nux {
+aside.tObject.downloadNow table tr.headTable td span.nux {
     width:28px;
     background-size:115px 33px;
     background-position:58px;
@@ -425,7 +429,7 @@ header.toxHeader section div p a.button span.nux {
     background-position:43px;
 }
 
-aside.tObject.downloadNow table tr:first-child td span.droid {
+aside.tObject.downloadNow table tr.headTable td span.droid {
     width:30px;
     background-size:115px 33px;
     background-position:right;

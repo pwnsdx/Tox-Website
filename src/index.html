@@ -41,8 +41,8 @@
         <link rel="stylesheet" type="text/css" href="assets/css/pe-icon-7-filled.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="assets/css/tox-helper.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="assets/css/tox-homepage.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="assets/css/tox-images.css" media="screen" />
         <!-- endbuild -->
+        <noscript><link rel="stylesheet" type="text/css" href="assets/css/tox-images.css" media="screen" /></noscript>
         <link rel="stylesheet" type="text/css" href="//code.cdn.mozilla.net/fonts/fira.css" media="screen" />
         <!--[if gte IE 9]>
           <style type="text/css">
@@ -58,21 +58,28 @@
         <header class="toxHeader">
             <section>
                 <nav class="font FiraSans bold">
-                    <ul class="small-centered small-9 medium-8 large-7 columns text-right">
+                    <ul class="small-centered small-12 medium-8 large-7 columns small-text-center medium-text-right">
                         <li><a href="https://wiki.tox.im/" target="_blank"><span class="pe-7s-global"></span> Wiki</a></li>
                         <li><a href="https://github.com/irungentoo/toxcore" target="_blank"><span class="pe-7s-folder"></span> Source</a></li>
                         <li><a href="https://donate.tox.im/" target="_blank"><span class="pe-7s-piggy"></span> Donate</a></li>
                     </ul>
                 </nav>
+                
                 <div>
                     <span class="logo"></span>
                     <h1 class="font FiraSans light show-for-large-up">A New Kind of Instant Messaging</h1>
                     <h1 class="font FiraSans light show-for-medium-only">A New Kind of Instant Messaging</h1>
-                    <h1 class="font FiraSans light show-for-small-only">A New Kind of Instant Messaging</h1>
+                    <h1 class="font FiraSans regular show-for-small-only">A New Kind of Instant Messaging</h1>
                     
-                    <p class="font FiraSans regular small-centered small-10 medium-11 large-8 columns">With the rise of government monitoring programs, Tox provides an easy to use application that allows you to connect with friends and family without anyone else listening in. While other big-name services require you to pay for features, Tox is totally free, and comes without advertising.</p>
-                    <p class="download small-centered small-10 medium-8 large-6 columns"><a class="small-centered radius button small font FiraSans extrabold" href="#download"><span class="osx"></span> Download qTox</a></p>
-                    <p class="hide small-centered small-10 medium-8 large-6 columns font FiraSans regular">OS X 10.7 or later &middot; <a href="#download" class="font FiraSans bold">Other clients &amp; platforms</a></p>
+                    <p class="font FiraSans regular small-centered small-11 medium-11 large-8 columns">With the rise of government monitoring programs, Tox provides an easy to use application that allows you to connect with friends and family without anyone else listening in. While other big-name services require you to pay for features, Tox is totally free, and comes without advertising.</p>
+                    
+                    <p class="download small-centered small-10 medium-8 large-6 columns">
+                        <a class="small-centered radius button small font FiraSans extrabold" data-anchor="true" href="#download"><span id="download-platform"></span>Download qTox</a>
+                    </p>
+                    <p class="hide small-centered small-10 medium-8 large-6 columns font FiraSans regular">
+                        <span id="download-specs"></span>
+                        <a class="font FiraSans bold" data-anchor="true" href="#download">Other clients &amp; platforms</a>
+                    </p>
                 </div>
                 <aside class="footer gradient">
                     <aside class="small-centered text-center small-10 medium-8 large-7 columns font FiraSans regular">
@@ -103,22 +110,21 @@
         
         <aside class="tObject dark downloadNow">
             <h2 class="font FiraSans regular text-center">So, what are you waiting for?</h2>
-            <h3 class="font FiraSans regular text-center">Choose the Client that best meets your needs and let's get started!</h3>
+            <h3 class="font FiraSans regular text-center">Choose the Client that best meets your needs and get started!</h3>
             
             <table class="font FiraSans bold small-centered small-11 medium-10 large-7 columns">
-            
-              <tr class="font FiraSans extrabold">
+              <tr class="font FiraSans extrabold headTable">
                 <td></td>
-                <td><span class="win"></span> Windows</td>		
-                <td><span class="osx"></span> OS X</td>
-                <td><span class="nux"></span> Linux APT</td>
-                <td><span class="nux"></span> Linux YUM</td>
+                <td><span class="win"></span></td>
+                <td><span class="osx"></span></td>
+                <td><span class="nux"></span></td>
+                <td><span class="nux"></span></td>
               </tr>
-            
+
               <tr data-client-name="qtox">
                 <td><a href="https://wiki.tox.im/QTox" target="_blank">qTox</a></td>
                 <td><a href="https://github.com/tux3/qTox/releases"><span class="pe-7s-cloud-download"></span></a></td>		
-                <td><a href="https://jenkins.libtoxcore.so/job/qTox%20OS%20X/lastSuccessfulBuild/artifact/qtox.dmg"><span class="pe-7s-cloud-download"></span></a></td>		
+                <td><a href="https://jenkins.libtoxcore.so/job/qTox%20OS%20X/lastSuccessfulBuild/artifact/qtox.dmg"><span class="pe-7s-cloud-download"></span></a></td>
                 <td><input type="text" value="apt-get install qtox" readonly="readonly" /></td>
                 <td><input type="text" value="yum install qtox" readonly="readonly" /></td>
               </tr>
@@ -131,7 +137,7 @@
               </tr>
               <tr data-client-name="toxy">
                 <td><a href="https://wiki.tox.im/Toxy" target="_blank">Toxy</a></td>
-                <td><a href="https://jenkins.impy.me/job/Toxy%20x86/lastSuccessfulBuild/artifact/toxy_x86.zip"><span class="pe-7s-cloud-download"></span> (32 bit)</a>&nbsp;&nbsp;&nbsp;<a href="https://jenkins.impy.me/job/Toxy%20x64/lastSuccessfulBuild/artifact/toxy_x64.zip"><span class="pe-7s-cloud-download"></span> (64 bit)</a></td>		
+                <td><!--<a href="https://jenkins.impy.me/job/Toxy%20x86/lastSuccessfulBuild/artifact/toxy_x86.zip"><span class="pe-7s-cloud-download"></span> (32 bit)</a>&nbsp;&nbsp;&nbsp;--><a href="https://jenkins.impy.me/job/Toxy%20x64/lastSuccessfulBuild/artifact/toxy_x64.zip"><span class="pe-7s-cloud-download"></span></a></td>		
                 <td><span class="pe-7s-close-circle"></span></td>
                 <td><span class="pe-7s-close-circle"></span></td>
                 <td><span class="pe-7s-close-circle"></span></td>
@@ -139,19 +145,17 @@
               <tr data-client-name="toxic">
                 <td><a href="https://wiki.tox.im/Toxic" target="_blank">Toxic</a></td>
                 <td><span class="pe-7s-close-circle"></span></td>
-                <!--<td><a href="#"><span class="pe-7s-box2"></span></a></td>-->
                 <td><span class="pe-7s-close-circle"></span></td>
                 <td><input type="text" value="apt-get install toxic" readonly="readonly" /></td>
                 <td><input type="text" value="yum install toxic" readonly="readonly" /></td>
               </tr>
             </table>
                 
-            <footer class="toxFooter gradient font FiraSans regular text-center">&copy; Copyright 2015 The Tox Foundation &middot; Privacy Policy &middot; Contact &middot; Jenkins &middot; Documentation &middot; Blog</footer>
+            <footer class="toxFooter gradient font FiraSans regular text-center">&copy; Copyright 2015 The Tox Foundation &middot; Privacy Policy &middot; Contact &middot; Documentation &middot; Blog &middot; Jenkins</footer>
             
             <a name="download"></a>
         </aside>
         
-            
         <!-- build:js assets/js/build.js -->
         <script type="text/javascript" src="assets/vendor/fastclick/lib/fastclick.js"></script>
         <script type="text/javascript" src="assets/vendor/modernizr/modernizr.js"></script>
