@@ -26,7 +26,7 @@ header.toxHeader section {
 
     opacity:0;
     
-    background-image:url(../images/Background.png);
+    background-image:url(../images/Background.png); /*ImageEmbed:skip*/
 
     background-repeat:no-repeat;
 
@@ -217,6 +217,7 @@ aside.tObject h3 {
 }
 
 aside.tObject.light {
+    background-image:url(../images/Pattern-Light.png);
     background-color:#fff;
 
     text-shadow: 0px 1px 0px #fff;
@@ -247,6 +248,7 @@ aside.tObject.light h3 {
 }
 
 aside.tObject.dark {
+    background-image:url(../images/Pattern-Dark.png);
     background-color:#000;
 
     text-shadow: 0px 1px 0px #000;
