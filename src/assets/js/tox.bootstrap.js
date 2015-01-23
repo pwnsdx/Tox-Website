@@ -73,23 +73,12 @@
             detectScreen:true
         });
 
-        // Load CSS for the pixeldensity
-        switch(Tox.utils.devicePixelRatio()) {
-            case 0: case 1: // Standard Display
-            jQuery('<link>')
-              .appendTo('head')
-              .attr({type : 'text/css', rel : 'stylesheet'})
-              .attr('href', Tox.d.cssPaths.imgs[1]);
-            break;
-            
-            default: // HD Super Amoled / Retina Display or more
-            jQuery('<link>')
-              .appendTo('head')
-              .attr({type : 'text/css', rel : 'stylesheet'})
-              .attr('href', Tox.d.cssPaths.imgs[2]);
-            break;
-        }
-        
+        // Load images for the current pixel density
+        jQuery('<link>')
+            .appendTo('head')
+            .attr({type : 'text/css', rel : 'stylesheet'})
+            .attr('href', Tox.d.cssPaths.imgs[(Tox.utils.devicePixelRatio() == 1 ? 1 : 2)]);
+
         // Load scenes
         this.scenesMap.Header();
         this.scenesMap.Content.One();
@@ -97,8 +86,6 @@
                 
         // Watch Resize Events
         Tox.resize.run();
-        
-        return true;
     };
     
     Tox.scenesMap = {
@@ -127,8 +114,13 @@
             // Show the download button details
             Tox.s('header.toxHeader section div p.hide').removeClass('hide');
             switch(Detectizr.os.name) {
+                
                 case 'windows': // Windows
-                Tox.utils.replaceDownloadText('win', 'Windows 7 or later');
+                if(Tox.utils.ltVersion('10.7.0', Detectizr.os.version)) {
+                    Tox.utils.replaceDownloadText('win', 'Windows 7 or later');
+                } else {
+                    Tox.utils.replaceDownloadText('win', 'Please upgrade to Windows 7 or later');
+                }
                 break;
 
                 case 'mac os': // OS X
@@ -183,8 +175,8 @@
             
             // Add scrolling arrow bouncing
             (new TimelineMax({repeat:300, delay:0.5})
-            .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:10, ease:Bounce.easeOut}))
-            .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
+                .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:10, ease:Bounce.easeOut}))
+                .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
             
             // Handle arrow scrolling
             Tox.s(Tox.d.cssPaths.scrollingArrow).on(Tox.d.events.Click, function(e) {
@@ -248,37 +240,6 @@
         }
     };
     
-    
-    // Unlock / Lock scrolling
-    Tox.scrollManager = {
-      
-        Lock: function()
-        {
-            Tox.s('body').css({'overflow': 'hidden'});
-            Tox.s(document).on(Tox.d.events.Scroll, function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                return false;
-            });
-            TweenLite.to(window, 0.1, {
-                scrollTo: {
-                    x:0,
-                    y: 0
-                }
-            });
-            
-            return true;
-        },
-        
-        Unlock: function()
-        {
-            if(Tox.s('body').css('overflow') === 'auto') return false;
-            Tox.s('body').css({'overflow': 'auto'});
-            Tox.s(document).off(Tox.d.events.Scroll);
-            return true;
-        }
-    };
-    
     // Resize listener
     Tox.resize = {
         
@@ -325,6 +286,36 @@
                 // Execute callbacks
                 execCallbacks(Tox.resize.stats.h, Tox.resize.stats.w);
             }, 10));
+        }
+    };
+    
+    // Unlock / Lock scrolling
+    Tox.scrollManager = {
+      
+        Lock: function()
+        {
+            Tox.s('body').css({'overflow': 'hidden'});
+            Tox.s(document).on(Tox.d.events.Scroll, function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                return false;
+            });
+            TweenLite.to(window, 0.1, {
+                scrollTo: {
+                    x:0,
+                    y: 0
+                }
+            });
+            
+            return true;
+        },
+        
+        Unlock: function()
+        {
+            if(Tox.s('body').css('overflow') === 'auto') return false;
+            Tox.s('body').css({'overflow': 'auto'});
+            Tox.s(document).off(Tox.d.events.Scroll);
+            return true;
         }
     };
     

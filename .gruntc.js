@@ -84,11 +84,16 @@ module.exports = function(grunt) {
         },
         imageEmbed: {
             developmentToProduction: {
+                src: [ $production + 'assets/css/tox-homepage.css' ],
+                dest: $production + 'assets/css/tox-homepage.css',
+                options: $options.imageEmbed
+            },
+            images: {
                 src: [ $production + 'assets/css/tox-images.css' ],
                 dest: $production + 'assets/css/tox-images.css',
                 options: $options.imageEmbed
             },
-            developmentToProductionRetina: {
+            imagesRetina: {
                 src: [ $production + 'assets/css/tox-images@2x.css' ],
                 dest: $production + 'assets/css/tox-images@2x.css',
                 options: $options.imageEmbed
@@ -169,7 +174,8 @@ module.exports = function(grunt) {
         'copy:developmentToProduction', // Copy development directory to production
         'imagemin', // Minify images
         'imageEmbed:developmentToProduction', // Add minified images direcly in the CSS
-        'imageEmbed:developmentToProductionRetina', // Add minified images direcly in the CSS (Retina)
+        'imageEmbed:images', // Add minified images direcly in the CSS
+        'imageEmbed:imagesRetina', // Add minified images direcly in the CSS (Retina)
         'useminPrepare', // Prepare minified files
         'concat:generated', // Concact files
         'cssmin:generated', // Minify CSS files
