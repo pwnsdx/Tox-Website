@@ -1,7 +1,7 @@
 header.toxHeader section div span.logo {
     background-image:url(../images/Logo.png);
 }
-aside.tObject.downloadNow table tr:first-child td span,
+aside.tObject.downloadNow table tr.headTable td span,
 header.toxHeader section div p a.button span {
     background:url(../images/Systems.png);
 }
