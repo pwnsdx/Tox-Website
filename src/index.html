@@ -42,8 +42,20 @@
         <link rel="stylesheet" type="text/css" href="assets/css/tox-helper.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="assets/css/tox-homepage.css" media="screen" />
         <!-- endbuild -->
-        <noscript><link rel="stylesheet" type="text/css" href="assets/css/tox-images.css" media="screen" /></noscript>
-        <link rel="stylesheet" type="text/css" href="//code.cdn.mozilla.net/fonts/fira.css" media="screen" />
+        
+        <noscript>
+            <!-- build:css assets/css/build-images.css -->
+            <link type="text/css" href="assets/css/tox-images.css" rel="stylesheet" media="screen" />
+            <!-- endbuild -->
+        </noscript>
+        <script type="text/javascript">
+        window.imagesRevisionsDensity = {
+            1: 'assets/css/tox-images.css',
+            2: 'assets/css/tox-images@2x.css'
+        };
+        </script>
+
+        <link type="text/css" href="//code.cdn.mozilla.net/fonts/fira.css" rel="stylesheet" media="screen" />
         <!--[if gte IE 9]>
           <style type="text/css">
             .gradient {

@@ -8,10 +8,36 @@
 
 var mozjpeg = require('imagemin-mozjpeg');
 
-var $development = 'src/'; // Development Folder
-var $production  = 'dist/'; // Production Folder (this is where the webserver will serve requests)
-var $buildName   = 'build'; // Prefix of the generated files (don't touch)
+var $development        = 'src/'; // Development Folder
+var $production         = 'dist/'; // Production Folder (this is where the webserver will serve requests)
+var $buildName          = 'build'; // Prefix of the generated files (don't touch)
+var $buildNameImages    = 'build-images'; // Prefix of the generated files for images@1x (don't touch)
 
+// Centralize all options here
+var $options = {
+    imageEmbed: {
+        maxImageSize: 0, // meh IE8 and below
+        deleteAfterEncoding: true
+    },
+    imagemin: {
+        optimizationLevel: 3,
+        svgoPlugins: [{ removeViewBox: false }],
+        use: [mozjpeg()]
+    },
+    uglify: {
+        preserveComments: false,
+        drop_console: true, // Remove console warning
+        report: 'gzip'
+    },
+    filerev: {
+        algorithm: 'sha1',
+        length: 40
+    },
+    cssmin: {
+        report: 'gzip'
+    }
+};
+    
 module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -23,19 +49,29 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-filerev'); // https://github.com/yeoman/grunt-filerev
     grunt.loadNpmTasks('grunt-usemin'); // https://github.com/yeoman/grunt-usemin
     grunt.loadNpmTasks('grunt-image-embed'); // https://github.com/ehynds/grunt-image-embed
-    //grunt.loadNpmTasks("grunt-css-url-rewrite");
+    grunt.loadNpmTasks('grunt-text-replace'); // https://github.com/yoniholmes/grunt-text-replace
 
+    grunt.filerev = { summary: {}};
+    
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
             tempDir: '.tmp',
             oldDist: $production,
             newDist: [
+                // General specs
+                $production + 'hidden.html', // Remove hidden.html file
                 $production + 'assets/vendor/', // Do not take vendor directory
+                
+                // JS specs
                 $production + 'assets/js/*',
-                '!' + $production + 'assets/js/build.*.js',
+                '!' + $production + 'assets/js/' + $buildName + '.*.js',
+                
+                // CSS specs
                 $production + 'assets/css/*',
-                '!' + $production + 'assets/css/build.*.css'
+                '!' + $production + 'assets/css/' + $buildName + '.*.css',
+                '!' + $production + 'assets/css/' + $buildNameImages + '.*.css',
+                '!' + $production + 'assets/css/' + $buildNameImages + '@2x.*.css'
             ],
         },
         copy: {
@@ -50,19 +86,17 @@ module.exports = function(grunt) {
             developmentToProduction: {
                 src: [ $production + 'assets/css/tox-images.css' ],
                 dest: $production + 'assets/css/tox-images.css',
-                options: {
-                    maxImageSize: 0,
-                    deleteAfterEncoding: true
-                }
+                options: $options.imageEmbed
+            },
+            developmentToProductionRetina: {
+                src: [ $production + 'assets/css/tox-images@2x.css' ],
+                dest: $production + 'assets/css/tox-images@2x.css',
+                options: $options.imageEmbed
             }
         },
         imagemin: {
             dynamic: {
-                options: {
-                    optimizationLevel: 3,
-                    svgoPlugins: [{ removeViewBox: false }],
-                    use: [mozjpeg()]
-                },
+                options: $options.imagemin,
                 files: [{
                     expand: true,
                     cwd: $production + 'assets/images',
@@ -72,29 +106,48 @@ module.exports = function(grunt) {
             }
         },
         useminPrepare: {
-            html: $production + 'index.html',
+            html: [
+                $production + 'index.html',
+                $production + 'hidden.html'
+            ]
         },
         cssmin: {
-            options: {
-                report: 'gzip'
-            }
+            options: $options.cssmin
         },
         uglify: {
-            options: {
-                preserveComments: false,
-                report: 'gzip',
-                drop_console: true
-            }
+            options: $options.uglify
+        },
+        replace: {
+          cssPaths: {
+            src: [ $production + 'index.html' ],    // Source files array (supports minimatch)
+            //dest: $production + 'index.html',
+            overwrite: true, // Overwrite matched source files
+            replacements: [{
+              from: 'assets/css/tox-images.css',
+              to: function (matchedWord) {   // callback replacement
+                var finalTo = grunt.filerev.summary[$production + 'assets/css/' + $buildNameImages + '.css'];
+                return finalTo.replace($production, '');
+              }
+            },{
+              from: 'assets/css/tox-images@2x.css',
+              to: function (matchedWord) {   // callback replacement
+                var finalTo = grunt.filerev.summary[$production + 'assets/css/' + $buildNameImages + '@2x.css'];
+                return finalTo.replace($production, '');
+              }
+            }]
+          }
         },
         filerev: {
-            options: {
-                algorithm: 'sha1',
-                length: 40
-            },
+            options: $options.filerev,
             dist: {
                 src: [
+                    // Base name
                     $production + 'assets/js/' + $buildName + '.js',
-                    $production + 'assets/css/' + $buildName + '.css'
+                    $production + 'assets/css/' + $buildName + '.css',
+                    
+                    // Images
+                    $production + 'assets/css/' + $buildNameImages + '.css',
+                    $production + 'assets/css/' + $buildNameImages + '@2x.css'
                 ]
             }
         },
@@ -102,7 +155,7 @@ module.exports = function(grunt) {
             html: $production + 'index.html',
             blockReplacements: {
                 css: function(block) {
-                    return '<link rel="stylesheet" type="text/css" href="' + block.dest + '" media="screen" />';
+                    return '<link type="text/css" href="' + block.dest + '" rel="stylesheet" media="screen" />';
                 },
                 js: function(block) {
                     return '<script type="text/javascript" src="' + block.dest + '"></script>';
@@ -115,13 +168,15 @@ module.exports = function(grunt) {
         'clean:oldDist', // Remove old directory
         'copy:developmentToProduction', // Copy development directory to production
         'imagemin', // Minify images
-        'imageEmbed:developmentToProduction', // Add minified images (less than 32kb) direcly in the CSS with base64 technique
+        'imageEmbed:developmentToProduction', // Add minified images direcly in the CSS
+        'imageEmbed:developmentToProductionRetina', // Add minified images direcly in the CSS (Retina)
         'useminPrepare', // Prepare minified files
         'concat:generated', // Concact files
         'cssmin:generated', // Minify CSS files
         'uglify:generated', // Minify JS files
-        'filerev', // Add SHA1 hash in JS/CSS files
-        'usemin', // Finish usemin operation 
+        'filerev', // Add SHA1 hash on JS/CSS files
+        'usemin', // Finish usemin operation
+        'replace:cssPaths', // Change Retina css path in the homepage (hacks)
         'clean:newDist', // Clean the development directory
         'clean:tempDir' // Remove temp directories
     ]);
