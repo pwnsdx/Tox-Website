@@ -48,8 +48,7 @@
     var Tox = {
         s: Foundation.utils.S, // Main selector
         g: function(g) { return Foundation.utils.random_str(g); }, // Random string generator
-        c: { // Cache
-        },
+        c: {}, // Cache
         d: { // Defines
             scrollInstance: (new ScrollMagic()),
             events: {
@@ -57,6 +56,7 @@
                 Scroll: (Modernizr.touch ? 'touchmove' : 'DOMMouseScroll mousewheel')
             },
             cssPaths: {
+                imgs: window.imagesRevisionsDensity,
                 scrollingArrow: 'header.toxHeader aside a',
                 downloadLinuxClientsSelection: 'aside.tObject.downloadNow table tr td input',
                 downloadButtons: 'header.toxHeader section div p a.button, header.toxHeader section div p:last-child a'
@@ -72,19 +72,21 @@
             detectDevice:true,
             detectScreen:true
         });
-        
-        console.log(Detectizr);
-        //alert(Detectizr.os.major);
-        
+
         // Load CSS for the pixeldensity
         switch(Tox.utils.devicePixelRatio()) {
-            case 1: // Standard Display
-            break;
-                
-            case 2: // HD Super Amoled / Retina Display
+            case 0: case 1: // Standard Display
+            jQuery('<link>')
+              .appendTo('head')
+              .attr({type : 'text/css', rel : 'stylesheet'})
+              .attr('href', Tox.d.cssPaths.imgs[1]);
             break;
             
-            default: // 4K/iMac Retina 5K/Apple iPhone 6 Plus
+            default: // HD Super Amoled / Retina Display or more
+            jQuery('<link>')
+              .appendTo('head')
+              .attr({type : 'text/css', rel : 'stylesheet'})
+              .attr('href', Tox.d.cssPaths.imgs[2]);
             break;
         }
         
