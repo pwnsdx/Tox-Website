@@ -16,9 +16,6 @@ header.toxHeader {
     background-color:#000;
 
     text-shadow: 0px 1px 0px rgba(0,0,0,.6);
-    -webkit-text-shadow: 0px 1px 0px rgba(0,0,0,.6);
-    -o-text-shadow: 0px 1px 0px rgba(0,0,0,.6);
-    -ms-text-shadow: 0px 1px 0px rgba(0,0,0,.6);
 }
 header.toxHeader section {
     height:100%;
@@ -29,10 +26,6 @@ header.toxHeader section {
     background-image:url(../images/Background.png); /*ImageEmbed:skip*/
 
     background-repeat:no-repeat;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
 }
 html.no-js header.toxHeader section {
@@ -95,9 +88,6 @@ html.csstransforms header.toxHeader section div {
     *  http://css-tricks.com/centering-percentage-widthheight-elements/
     */
     transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
 }
 html.csstransforms header.toxHeader section div.tween {
     top:80%;
@@ -149,14 +139,8 @@ header.toxHeader section div p a.button {
     background-color:#fc605b;
     font-size:18px;
 
-    -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.2);
-    -moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.2);
     box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.2);
-
     text-shadow: 0px 1px 0px rgba(0,0,0,.15);
-    -webkit-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
-    -o-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
-    -ms-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
 }
 header.toxHeader section div p a.button:hover {
     background-color:#d8524e;
@@ -221,9 +205,6 @@ aside.tObject.light {
     background-color:#fff;
 
     text-shadow: 0px 1px 0px #fff;
-    -webkit-text-shadow: 0px 1px 0px #fff;
-    -o-text-shadow: 0px 1px 0px #fff;
-    -ms-text-shadow: 0px 1px 0px #fff;
 }
 aside.tObject.light aside {
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -252,9 +233,6 @@ aside.tObject.dark {
     background-color:#000;
 
     text-shadow: 0px 1px 0px #000;
-    -webkit-text-shadow: 0px 1px 0px #000;
-    -o-text-shadow: 0px 1px 0px #000;
-    -ms-text-shadow: 0px 1px 0px #000;
 }
 aside.tObject.dark aside {
 
@@ -278,17 +256,8 @@ aside.tObject.downloadNow table {
     background:#fff;
 
     text-shadow: none;
-    -webkit-text-shadow: none;
-    -moz-text-shadow: none;
-    -o-text-shadow: none;
-    -ms-text-shadow: none;
     
     border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -o-border-radius: 5px;
-    -ms-border-radius: 5px;
-
     border:0;
 }
 aside.tObject.downloadNow table tr {
@@ -366,24 +335,16 @@ aside.tObject.downloadNow table tr.headTable td {
     font-size:18px;
     
     text-shadow: 0px 1px 0px rgba(0,0,0,.15);
-    -webkit-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
-    -o-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
-    -ms-text-shadow: 0px 1px 0px rgba(0,0,0,.15);
 }
 aside.tObject.downloadNow table tr.headTable td p {
     display:inline;
     font-size:18px;
 }
 aside.tObject.downloadNow table tr.headTable td:first-child {
-    -webkit-border-top-left-radius: 5px;
-    -moz-border-radius-topleft: 5px;
     border-top-left-radius: 5px;
 }
 aside.tObject.downloadNow table tr.headTable td:last-child {
     border-right: 0;
-    
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
     border-top-right-radius: 5px;
 }
 aside.tObject.downloadNow table tr.headTable td span,
@@ -465,14 +426,8 @@ aside.tObject section.preview div {
     border-left:1px solid #d2d2d2;
     border-right:1px solid #d2d2d2;
 
-    -webkit-box-shadow: 0px 20px 80px -10px rgba(0,0,0,.3);
-    -moz-box-shadow: 0px 20px 80px -10px rgba(0,0,0,.3);
     box-shadow: 0px 20px 80px -10px rgba(0,0,0,.3);
 
-    -webkit-border-top-left-radius: 4px;
-    -webkit-border-top-right-radius: 4px;
-    -moz-border-radius-topleft: 4px;
-    -moz-border-radius-topright: 4px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
