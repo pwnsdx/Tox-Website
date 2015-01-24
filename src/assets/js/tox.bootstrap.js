@@ -96,9 +96,24 @@
             // Make timeline: https://github.com/janpaepke/ScrollMagic/blob/master/examples/advanced/svg_drawing.html#L80
             
             // Lock scrolling only for tablet/desktop
-            switch(Detectizr.device.type) {
-                case 'mobile': Tox.scrollManager.Unlock(); break;
-                default: Tox.scrollManager.Lock(); break;
+            switch(Modernizr.touch) {
+                    
+                // This is a mobile/tablet device - Do not lock scrolling
+                case true: Tox.scrollManager.Unlock(); break;
+                
+                // Desktop
+                // Lock scrolling & bind unlocking to keyboard arrows
+                case false:
+                Tox.scrollManager.Lock();
+                Tox.s(document).on('keydown.scrollManager', function(e) {
+                    switch(e.which) {
+                        case 38: case 40: // Up/Down
+                        e.preventDefault(); // Prevent execution
+                        Tox.scrollManager.Unlock(true);
+                        break;
+                    }
+                });
+                break;
             }
             
             // If the user support csstransforms, show full-screen header
@@ -110,7 +125,7 @@
             
             // Remove anchors as Javascript is active
             Tox.s('a[data-anchor=true]').attr('href', '');
-
+            
             // Show the download button details
             Tox.s('header.toxHeader section div p.hide').removeClass('hide');
             switch(Detectizr.os.name) {
@@ -183,10 +198,7 @@
                 e.preventDefault();
                 
                 // Unlock scrolling
-                Tox.scrollManager.Unlock();
-                
-                // Scroll to presentation
-                TweenLite.to(window, 1, {scrollTo:{x:0, y: Tox.resize.stats.h}});
+                Tox.scrollManager.Unlock(true);
             });
             
             // Handle download button
@@ -206,10 +218,7 @@
         Content:
         {
             One: function()
-            {
-                // Get right background density and load it
-                //Tox.utils.injectBackground('aside.tObject section.preview', 'aside.tObject section.preview div');
-                
+            {                
                 // Create Tween
                 var Tween = TweenMax.to([
                     'aside.tObject section.preview',
@@ -261,7 +270,7 @@
         },
         removeEvent: function(id)
         {
-            this.memory[id] = false;
+            this.memory[ id ] = false;
         },
         
         run: function()
@@ -310,11 +319,20 @@
             return true;
         },
         
-        Unlock: function()
+        Unlock: function(scrollToPresentation)
         {
             if(Tox.s('body').css('overflow') === 'auto') return false;
+            
+            // Unlock scrolling
             Tox.s('body').css({'overflow': 'auto'});
             Tox.s(document).off(Tox.d.events.Scroll);
+            
+            // Unlock keyboard down/up keys
+            if(!Modernizr.touch) Tox.s(document).off('keydown.scrollManager');
+            
+            // Scroll to presentation
+            if(jQuery.type(scrollToPresentation) !== 'undefined') TweenLite.to(window, 1, {scrollTo:{x:0, y: Tox.resize.stats.h}});
+            
             return true;
         }
     };
