@@ -6,8 +6,7 @@
 *
 */
 
-var mozjpeg = require('imagemin-mozjpeg');
-
+var mozjpeg             = require('imagemin-mozjpeg');
 var $development        = 'src/'; // Development Folder
 var $production         = 'dist/'; // Production Folder (this is where the webserver will serve requests)
 var $buildName          = 'build'; // Prefix of the generated files (don't touch)
@@ -37,7 +36,7 @@ var $options = {
         report: 'gzip'
     }
 };
-    
+
 module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -50,9 +49,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-usemin'); // https://github.com/yeoman/grunt-usemin
     grunt.loadNpmTasks('grunt-image-embed'); // https://github.com/ehynds/grunt-image-embed
     grunt.loadNpmTasks('grunt-text-replace'); // https://github.com/yoniholmes/grunt-text-replace
+    grunt.loadNpmTasks('grunt-autoprefixer'); // https://github.com/nDmitry/grunt-autoprefixer
 
-    grunt.filerev = { summary: {}};
-    
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
@@ -62,11 +60,11 @@ module.exports = function(grunt) {
                 // General specs
                 $production + 'hidden.html', // Remove hidden.html file
                 $production + 'assets/vendor/', // Do not take vendor directory
-                
+
                 // JS specs
                 $production + 'assets/js/*',
                 '!' + $production + 'assets/js/' + $buildName + '.*.js',
-                
+
                 // CSS specs
                 $production + 'assets/css/*',
                 '!' + $production + 'assets/css/' + $buildName + '.*.css',
@@ -110,6 +108,20 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        autoprefixer: {
+            homepage: {
+                options: {
+                    // Default browser list is: > 1%, last 2 versions, Firefox ESR, Opera 12.1.
+                    // https://github.com/ai/browserslist
+                    //diff: $production + 'css.diff', // Debug
+                    browsers: ['> 1%', 'last 5 versions', 'Firefox ESR', 'Opera 12.1', 'IE 9'],
+                    cascade: false, // Don't do cascade indentation
+                    remove: false // Disable outdated prefixes
+                },
+                src: $production + 'assets/css/tox-homepage.css',
+                dest: $production + 'assets/css/tox-homepage.css'
+            },
+        },
         useminPrepare: {
             html: [
                 $production + 'index.html',
@@ -123,24 +135,24 @@ module.exports = function(grunt) {
             options: $options.uglify
         },
         replace: {
-          cssPaths: {
-            src: [ $production + 'index.html' ],    // Source files array (supports minimatch)
-            //dest: $production + 'index.html',
-            overwrite: true, // Overwrite matched source files
-            replacements: [{
-              from: 'assets/css/tox-images.css',
-              to: function (matchedWord) {   // callback replacement
-                var finalTo = grunt.filerev.summary[$production + 'assets/css/' + $buildNameImages + '.css'];
-                return finalTo.replace($production, '');
-              }
-            },{
-              from: 'assets/css/tox-images@2x.css',
-              to: function (matchedWord) {   // callback replacement
-                var finalTo = grunt.filerev.summary[$production + 'assets/css/' + $buildNameImages + '@2x.css'];
-                return finalTo.replace($production, '');
-              }
-            }]
-          }
+            cssPaths: {
+                src: [ $production + 'index.html' ],    // Source files array (supports minimatch)
+                //dest: $production + 'index.html',
+                overwrite: true, // Overwrite matched source files
+                replacements: [{
+                    from: 'assets/css/tox-images.css',
+                    to: function (matchedWord) {   // callback replacement
+                        var finalTo = grunt.filerev.summary[$production + 'assets/css/' + $buildNameImages + '.css'];
+                        return finalTo.replace($production, '');
+                    }
+                },{
+                    from: 'assets/css/tox-images@2x.css',
+                    to: function (matchedWord) {   // callback replacement
+                        var finalTo = grunt.filerev.summary[$production + 'assets/css/' + $buildNameImages + '@2x.css'];
+                        return finalTo.replace($production, '');
+                    }
+                }]
+            }
         },
         filerev: {
             options: $options.filerev,
@@ -149,7 +161,7 @@ module.exports = function(grunt) {
                     // Base name
                     $production + 'assets/js/' + $buildName + '.js',
                     $production + 'assets/css/' + $buildName + '.css',
-                    
+
                     // Images
                     $production + 'assets/css/' + $buildNameImages + '.css',
                     $production + 'assets/css/' + $buildNameImages + '@2x.css'
@@ -173,6 +185,7 @@ module.exports = function(grunt) {
         'clean:oldDist', // Remove old directory
         'copy:developmentToProduction', // Copy development directory to production
         'imagemin', // Minify images
+        'autoprefixer:homepage', // Add prefix in homepage CSS
         'imageEmbed:developmentToProduction', // Add minified images direcly in the CSS
         'imageEmbed:images', // Add minified images direcly in the CSS
         'imageEmbed:imagesRetina', // Add minified images direcly in the CSS (Retina)
