@@ -69,7 +69,7 @@
     for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
     mixpanel.init("4f7fec832a354dc9484bd5c60d1b68b4");</script>
 
-    <body>
+    <body onload=mixpanel.track("new_load");>
         
         <header class="toxHeader">
             <section>
@@ -78,6 +78,7 @@
                         <li><a onclick=mixpanel.track("new_wiki"); href="https://wiki.tox.im/" target="_blank"><span class="pe-7s-global"></span> Wiki</a></li>
                         <li><a onclick=mixpanel.track("new_toxcore"); href="https://github.com/irungentoo/toxcore" target="_blank"><span class="pe-7s-folder"></span> Source</a></li>
                         <li><a onclick=mixpanel.track("new_donate"); href="https://donate.tox.im/" target="_blank"><span class="pe-7s-piggy"></span> Donate</a></li>
+                        <li><a onclick=mixpanel.track("new_toxme"); href="https://toxme.se" target="_blank"><span class="pe-7s-id"></span> ToxMe</a></li>
                     </ul>
                 </nav>
                 
@@ -126,7 +127,7 @@
         
         <aside class="tObject dark downloadNow">
             <h2 class="font FiraSans regular text-center">So, what are you waiting for?</h2>
-            <h3 class="font FiraSans regular text-center">Choose the Client that best meets your needs and get started!</h3>
+            <h3 class="font FiraSans regular text-center">Select your OS and get started!</h3>
             
             <table class="font FiraSans bold small-centered small-11 medium-10 large-7 columns">
               <tr class="font FiraSans extrabold headTable">
@@ -146,7 +147,7 @@
               </tr>
             </table>
                 
-            <footer class="toxFooter gradient font FiraSans regular text-center">&copy; Copyright 2015 The Tox Foundation &middot; <a href="https://libtoxcore.so">Documentation</a> &middot; <a href="https://blog.tox.im/">Blog</a> &middot;</footer>
+            <footer class="toxFooter gradient font FiraSans regular text-center">&copy; Copyright 2015 The Tox Foundation &middot; <a href="https://libtoxcore.so">Documentation</a> &middot; <a href="https://blog.tox.im/">Blog</a></footer>
             
             <a name="download"></a>
         </aside>
