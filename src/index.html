@@ -64,15 +64,20 @@
         <![endif]-->
     </head>
 
+<!-- metrics -->
+    <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+    for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+    mixpanel.init("4f7fec832a354dc9484bd5c60d1b68b4");</script>
+
     <body>
         
         <header class="toxHeader">
             <section>
                 <nav class="font FiraSans bold">
                     <ul class="small-centered small-12 medium-8 large-7 columns small-text-center medium-text-right">
-                        <li><a href="https://wiki.tox.im/" target="_blank"><span class="pe-7s-global"></span> Wiki</a></li>
-                        <li><a href="https://github.com/irungentoo/toxcore" target="_blank"><span class="pe-7s-folder"></span> Source</a></li>
-                        <li><a href="https://donate.tox.im/" target="_blank"><span class="pe-7s-piggy"></span> Donate</a></li>
+                        <li><a onclick=mixpanel.track("new_wiki"); href="https://wiki.tox.im/" target="_blank"><span class="pe-7s-global"></span> Wiki</a></li>
+                        <li><a onclick=mixpanel.track("new_toxcore"); href="https://github.com/irungentoo/toxcore" target="_blank"><span class="pe-7s-folder"></span> Source</a></li>
+                        <li><a onclick=mixpanel.track("new_donate"); href="https://donate.tox.im/" target="_blank"><span class="pe-7s-piggy"></span> Donate</a></li>
                     </ul>
                 </nav>
                 
@@ -85,11 +90,11 @@
                     <p class="font FiraSans regular small-centered small-11 medium-11 large-8 columns">With the rise of government monitoring programs, Tox provides an easy to use application that allows you to connect with friends and family without anyone else listening in. While other big-name services require you to pay for features, Tox is totally free, and comes without advertising.</p>
                     
                     <p class="download small-centered small-10 medium-8 large-6 columns">
-                        <a class="small-centered radius button small font FiraSans extrabold" data-anchor="true" href="#download"><span id="download-platform"></span>Download qTox</a>
+                        <a class="small-centered radius button small font FiraSans extrabold" data-anchor="true" onclick=mixpanel.track("new_download"); href="#download"><span id="download-platform"></span>Download qTox</a>
                     </p>
                     <p class="hide small-centered small-10 medium-8 large-6 columns font FiraSans regular">
                         <span id="download-specs"></span>
-                        <a class="font FiraSans bold" data-anchor="true" href="#download">Other clients &amp; platforms</a>
+                        <a class="font FiraSans bold" data-anchor="true" onclick=mixpanel.track("new_download_other"); href="#download">Other clients &amp; platforms</a>
                     </p>
                 </div>
                 <aside class="footer gradient">
@@ -125,44 +130,23 @@
             
             <table class="font FiraSans bold small-centered small-11 medium-10 large-7 columns">
               <tr class="font FiraSans extrabold headTable">
-                <td></td>
-                <td><span class="win"></span></td>
+                <td><span class="win32"></span></td>
+                <td><span class="win64"></span></td>
                 <td><span class="osx"></span></td>
                 <td><span class="nux"></span></td>
                 <td><span class="nux"></span></td>
               </tr>
 
               <tr data-client-name="qtox">
-                <td><a href="https://wiki.tox.im/QTox" target="_blank">qTox</a></td>
-                <td><a href="https://github.com/tux3/qTox/releases"><span class="pe-7s-cloud-download"></span></a></td>		
-                <td><a href="https://jenkins.libtoxcore.so/job/qTox%20OS%20X/lastSuccessfulBuild/artifact/qtox.dmg"><span class="pe-7s-cloud-download"></span></a></td>
-                <td><input type="text" value="apt-get install qtox" readonly="readonly" /></td>
-                <td><input type="text" value="yum install qtox" readonly="readonly" /></td>
-              </tr>
-              <tr data-client-name="utox">
-                <td><a href="https://wiki.tox.im/UTox" target="_blank">µTox</a></td>
-                <td><a href="https://github.com/notsecure/utox-update/releases/download/0.0.1/utox_runner.zip"><span class="pe-7s-cloud-download"></span></a></td>		
-                <td><span class="pe-7s-close-circle"></span></td>
-                <td><input type="text" value="apt-get install utox" readonly="readonly" /></td>
-                <td><input type="text" value="yum install utox" readonly="readonly" /></td>
-              </tr>
-              <tr data-client-name="toxy">
-                <td><a href="https://wiki.tox.im/Toxy" target="_blank">Toxy</a></td>
-                <td><!--<a href="https://jenkins.impy.me/job/Toxy%20x86/lastSuccessfulBuild/artifact/toxy_x86.zip"><span class="pe-7s-cloud-download"></span> (32 bit)</a>&nbsp;&nbsp;&nbsp;--><a href="https://jenkins.impy.me/job/Toxy%20x64/lastSuccessfulBuild/artifact/toxy_x64.zip"><span class="pe-7s-cloud-download"></span></a></td>		
-                <td><span class="pe-7s-close-circle"></span></td>
-                <td><span class="pe-7s-close-circle"></span></td>
-                <td><span class="pe-7s-close-circle"></span></td>
-              </tr>
-              <tr data-client-name="toxic">
-                <td><a href="https://wiki.tox.im/Toxic" target="_blank">Toxic</a></td>
-                <td><span class="pe-7s-close-circle"></span></td>
-                <td><span class="pe-7s-close-circle"></span></td>
-                <td><input type="text" value="apt-get install toxic" readonly="readonly" /></td>
-                <td><input type="text" value="yum install toxic" readonly="readonly" /></td>
+                <td><a onclick=mixpanel.track("new_download_win32"); href="https://tux3-dev.tox.im/jenkins/job/qTox-win32-nsis/lastSuccessfulBuild/artifact/setup-qtox32.exe"><span class="pe-7s-cloud-download"></span></a></td>
+                <td><a onclick=mixpanel.track("new_download_win64"); href="https://tux3-dev.tox.im/jenkins/job/qTox-win64-nsis/lastSuccessfulBuild/artifact/setup-qtox64.exe"><span class="pe-7s-cloud-download"></span></a></td>		
+                <td><a onclick=mixpanel.track("new_download_osx"); href="https://jenkins.libtoxcore.so/job/qTox%20OS%20X/lastSuccessfulBuild/artifact/qtox.dmg"><span class="pe-7s-cloud-download"></span></a></td>
+                <td><a onclick=mixpanel.track("new_download_deb"); href="https://repo.tox.im/pool/nightly/main/q/qtox/qtox_1.0-1305_amd64.deb"><span class="pe-7s-cloud-download"></span></a></td>
+                <td><a onclick=mixpanel.track("new_download_rpm"); href="https://repo.tox.im/x86_64/qtox-401.rpm"><span class="pe-7s-cloud-download"></span></a></td>
               </tr>
             </table>
                 
-            <footer class="toxFooter gradient font FiraSans regular text-center">&copy; Copyright 2015 The Tox Foundation &middot; <a href="https://libtoxcore.so">Documentation</a> &middot; <a href="https://blog.tox.im/">Blog</a> &middot; <a href="https://travis-ci.org/irungentoo/toxcore">Travis</a></footer>
+            <footer class="toxFooter gradient font FiraSans regular text-center">&copy; Copyright 2015 The Tox Foundation &middot; <a href="https://libtoxcore.so">Documentation</a> &middot; <a href="https://blog.tox.im/">Blog</a> &middot;</footer>
             
             <a name="download"></a>
         </aside>
