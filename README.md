@@ -8,3 +8,7 @@ To use it:
 
 To update dependencies:
 ```bower update```
+
+Translations
+============
+Submit translations [here](https://www.transifex.com/projects/p/tox-website-next/).
