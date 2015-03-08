@@ -116,12 +116,6 @@ body {
     font-smooth:always;
     text-rendering: optimizeLegibility;
 
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -o-font-smoothing: antialiased;
-    -ms-font-smoothing: antialiased;
-    font-smoothing: antialiased;
-
     cursor:default;
 }
 .font.FiraSans {
