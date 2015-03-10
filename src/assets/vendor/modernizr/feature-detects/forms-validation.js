@@ -7,56 +7,77 @@
 (function(document, Modernizr){
 
 
-  Modernizr.formvalidationapi = false;
-  Modernizr.formvalidationmessage = false;
+Modernizr.formvalidationapi = false;
+Modernizr.formvalidationmessage = false;
 
-  Modernizr.addTest('formvalidation', function() {
+Modernizr.addTest('formvalidation', function(){
     var form = document.createElement('form');
-    if ( !('checkValidity' in form) || !('addEventListener' in form) ) {
-      return false;
+    if ( !('checkValidity' in form) ) {
+        return false;
     }
-    if ('reportValidity' in form) {
-      return true;
-    }
-    var invalidFired = false;
-    var input;
+    var body = document.body,
 
-    Modernizr.formvalidationapi =  true;
+    html = document.documentElement,
+
+    bodyFaked = false,
+
+    invaildFired = false,
+
+    input;
+
+    Modernizr.formvalidationapi = true;
 
     // Prevent form from being submitted
-    form.addEventListener('submit', function(e) {
-      //Opera does not validate form, if submit is prevented
-      if ( !window.opera ) {
-        e.preventDefault();
-      }
-      e.stopPropagation();
-    }, false);
+    form.onsubmit = function(e) {
+        //Opera does not validate form, if submit is prevented
+        if ( !window.opera ) {
+            e.preventDefault();
+        }
+        e.stopPropagation();
+    };
 
-    // Calling form.submit() doesn't trigger interactive validation,
+    // Calling form.submit() doesn't trigger interactive validation, 
     // use a submit button instead
     //older opera browsers need a name attribute
     form.innerHTML = '<input name="modTest" required><button></button>';
 
-    Modernizr.testStyles('#modernizr form{position:absolute;top:-99999em}', function( node ) {
-      node.appendChild(form);
+    // FF4 doesn't trigger "invalid" event if form is not in the DOM tree
+    // Chrome throws error if invalid input is not visible when submitting 
+    form.style.position = 'absolute';
+    form.style.top = '-99999em';
 
-      input = form.getElementsByTagName('input')[0];
+    // We might in <head> in which case we need to create body manually
+    if ( !body ) {
+        bodyFaked = true;
+        body = document.createElement('body');
+        //avoid crashing IE8, if background image is used
+        body.style.background = "";
+        html.appendChild(body);
+    }
 
-      // Record whether "invalid" event is fired
-      input.addEventListener('invalid', function(e) {
-        invalidFired = true;
+    body.appendChild(form);
+
+    input = form.getElementsByTagName('input')[0];	
+
+    // Record whether "invalid" event is fired
+    input.oninvalid = function(e) {
+        invaildFired = true;
         e.preventDefault();
         e.stopPropagation();
-      }, false);
+    };
 
-      //Opera does not fully support the validationMessage property
-      Modernizr.formvalidationmessage = !!input.validationMessage;
+    //Opera does not fully support the validationMessage property
+    Modernizr.formvalidationmessage = !!input.validationMessage;
 
-      // Submit form by clicking submit button
-      form.getElementsByTagName('button')[0].click();
-    });
+    // Submit form by clicking submit button
+    form.getElementsByTagName('button')[0].click();
 
-    return invalidFired;
-  });
+    // Don't forget to clean up
+    body.removeChild(form);
+    bodyFaked && html.removeChild(body);
+
+    return invaildFired;
+});
+
 
 })(document, window.Modernizr);
