@@ -1,6 +1,9 @@
 Tox Website
 ===========
 
+**Current build status:** 
+[![Build Status](https://travis-ci.org/pwnsdx/Tox-Website.svg)](https://travis-ci.org/pwnsdx/Tox-Website)
+
 The new Tox Website.
 
 To use it:
