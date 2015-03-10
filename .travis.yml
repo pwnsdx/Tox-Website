@@ -11,3 +11,8 @@ script:
     - 'grunt --gruntfile .gruntc.js --stack'
 notifications:
   email: false
+addons:
+  sauce_connect:
+    username: "tox_sean"
+    access_key:
+      secure: "Q8ckY+CehgyaD4VWwXeVe/dXzKVXLhCn3udw47RQVRkjm/Ll9gFnpNcwPmEalupwqoipf6+hQcr4NeJd7RfYog7aPZLPtx3G3OJyRnR+NPViTwRNmHj2NpBa8ZEj1BaKB6VkObpDI3ZFmnpsbfJpSrlnABF132aZTXFpszvdkeU="
