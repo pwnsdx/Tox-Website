@@ -1,18 +1,19 @@
+env:
+  global:
+  - secure: e1lV5V8ZbEkRJpDhotp0miNS+8rJE3wqE9mu7ghmcCHC2Sm9OtrQGJrhHxEsUodA2SbQ17g6x2Nu/8O2MYWvSAzRaRv7rHORi8lg1jsAgCfjxg5wbL06RxrlGqriSOuL2hOag28ZhxlKF+PG0qcesbsylo8ZT4lgAIuAbzhUCVw=
+  - secure: C1mG0XLkOAuOUGm6eUE3OyReFDe0jk7OKQLlxOd9d4rScUdi3sFt4RGcwwmHfBuyPONAB4vd4E7l24zzThFt2fkqYQA0EjDdjDR89pYigO8mx2XhP8mxRxBiCDMEGLv1dDEWmWPmSnUlmqgbdRsARZ0+6DroqtErKpagH0K7jl8=
 language: node_js
 node_js:
-  - '0.12'
+- '0.12'
 before_install:
-  - 'gem update --system'
-  - 'npm update'
+- gem update --system
+- npm update
 before_script:
-  - 'npm install -g grunt-cli bower'
-  - 'bower update --force'
+- npm install -g grunt-cli bower
+- bower update --force
 script:
-    - 'grunt --gruntfile .gruntc.js --stack'
+- grunt --gruntfile .gruntc.js --stack
 notifications:
   email: false
 addons:
-  sauce_connect:
-    username: "tox_sean"
-    access_key:
-      secure: "Q8ckY+CehgyaD4VWwXeVe/dXzKVXLhCn3udw47RQVRkjm/Ll9gFnpNcwPmEalupwqoipf6+hQcr4NeJd7RfYog7aPZLPtx3G3OJyRnR+NPViTwRNmHj2NpBa8ZEj1BaKB6VkObpDI3ZFmnpsbfJpSrlnABF132aZTXFpszvdkeU="
+  sauce_connect: true
