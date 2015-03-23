@@ -307,6 +307,7 @@
             Tox.s(document).on(Tox.d.events.Scroll, function(e) {
                 e.stopPropagation();
                 e.preventDefault();
+                Tox.scrollManager.Unlock(true);
                 return false;
             });
             TweenLite.to(window, 0.1, {
