@@ -148,6 +148,9 @@ header.toxHeader section div p a.button:hover {
 header.toxHeader section div p:last-child {
     font-size:16px;
 }
+header.toxHeader section div p small#alpha-warning {
+    color:red;
+}
 header.toxHeader aside.footer {
     position:absolute;
     bottom:0;
