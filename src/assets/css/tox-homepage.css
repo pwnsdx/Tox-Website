@@ -37,6 +37,7 @@ header.toxHeader section.tween {
 
 header.toxHeader section nav {
     width:100%;
+    position: fixed;
     margin-left:20%;
     padding-top:15px;
     font-size:16px;
