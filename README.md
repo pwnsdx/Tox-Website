@@ -8,8 +8,8 @@ To use it:
 
 ```shell
 npm install && \
-grunt --gruntfile .gruntc.js && \
-bower install --force-latest
+bower install --force-latest && \
+grunt --gruntfile .gruntc.js
 ```
 
 #### Translations
