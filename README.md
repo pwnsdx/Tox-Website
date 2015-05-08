@@ -1,17 +1,16 @@
-Tox Website
-===========
+### Tox Website [![Build Status](https://travis-ci.org/pwnsdx/Tox-Website.svg)](https://travis-ci.org/pwnsdx/Tox-Website)
 
-**Current build status:** 
-[![Build Status](https://travis-ci.org/pwnsdx/Tox-Website.svg)](https://travis-ci.org/pwnsdx/Tox-Website)
+![Preview](Resources/Preview.jpg)
+
 
 The new Tox Website.
 
 To use it:
-```grunt --gruntfile .gruntc.js```
+```npm install && grunt --gruntfile .gruntc.js```
 
 To update dependencies:
 ```bower update```
 
-Translations
-============
+#### Translations
+
 Submit translations [here](https://www.transifex.com/projects/p/tox-website-next/).
