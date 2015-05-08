@@ -5,9 +5,11 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
+       
         <!--[if lte IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        
         <!-- TITLE -->
         <title>Tox Messenger</title>
 
@@ -67,21 +69,21 @@
         <![endif]-->
     </head>
 
-<!-- metrics -->
+    <!-- Metrics -->
     <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
     for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
     mixpanel.init("4f7fec832a354dc9484bd5c60d1b68b4");</script>
 
-    <body onload=mixpanel.track("new_load");>
+    <body onload="mixpanel.track('new_load');">
         
         <header class="toxHeader">
             <section>
                 <nav class="font FiraSans bold">
                     <ul class="small-centered small-12 medium-8 large-7 columns small-text-center medium-text-right">
-                        <li><a onclick=mixpanel.track("new_wiki"); href="https://wiki.tox.im/" target="_blank"><span class="pe-7s-global"></span> Wiki</a></li>
-                        <li><a onclick=mixpanel.track("new_toxcore"); href="https://github.com/irungentoo/toxcore" target="_blank"><span class="pe-7s-folder"></span> Source</a></li>
-                        <li><a onclick=mixpanel.track("new_donate"); href="https://donate.tox.im/" target="_blank"><span class="pe-7s-piggy"></span> Donate</a></li>
-                        <li><a onclick=mixpanel.track("new_toxme"); href="https://toxme.se" target="_blank"><span class="pe-7s-id"></span> ToxMe</a></li>
+                        <li><a onclick="mixpanel.track('new_wiki');" href="https://wiki.tox.im/" target="_blank"><span class="pe-7s-global"></span> Wiki</a></li>
+                        <li><a onclick="mixpanel.track('new_toxcore');" href="https://github.com/irungentoo/toxcore" target="_blank"><span class="pe-7s-folder"></span> Source</a></li>
+                        <li><a onclick="mixpanel.track('new_donate');" href="https://donate.tox.im/" target="_blank"><span class="pe-7s-piggy"></span> Donate</a></li>
+                        <li><a onclick="mixpanel.track('new_toxme');" href="https://toxme.se" target="_blank"><span class="pe-7s-id"></span> ToxMe</a></li>
                     </ul>
                 </nav>
                 
@@ -142,11 +144,40 @@
               </tr>
 
               <tr data-client-name="qtox">
-                <td><a onclick=mixpanel.track("new_download_win32"); href="https://tux3-dev.tox.im/jenkins/job/qTox-win32-nsis/lastSuccessfulBuild/artifact/setup-qtox32.exe"><span class="pe-7s-cloud-download"> <span class="font FiraSans extrabold">Win32</span></span></a></td>
-                <td><a onclick=mixpanel.track("new_download_win64"); href="https://tux3-dev.tox.im/jenkins/job/qTox-win64-nsis/lastSuccessfulBuild/artifact/setup-qtox64.exe"><span class="pe-7s-cloud-download"> <span class="font FiraSans extrabold">Win64</span></span></a></td>		
-                <td><a onclick=mixpanel.track("new_download_osx"); href="https://jenkins.libtoxcore.so/job/qTox%20OS%20X/lastSuccessfulBuild/artifact/qtox.zip"><span class="pe-7s-cloud-download"> <span class="font FiraSans extrabold">OS X</span></span></a></td>
-                <td><a onclick=mixpanel.track("new_download_android"); href="https://plus.google.com/communities/103125800027884896310"><span class="pe-7s-cloud-download"> <span class="font FiraSans extrabold">Android</span></span></a></td>
-                <td><a onclick=mixpanel.track("new_download_other"); href="https://wiki.tox.im/binaries"><span class="pe-7s-cloud-download"> <span class="font FiraSans extrabold">Others</span></span></a></td>
+                <td>
+                   <a onclick="mixpanel.track('new_download_win32');" href="https://tux3-dev.tox.im/jenkins/job/qTox-win32-nsis/lastSuccessfulBuild/artifact/setup-qtox32.exe">
+                      <span class="pe-7s-cloud-download">
+                         <span class="font FiraSans extrabold">Windows (32bits)</span>
+                      </span>
+                   </a>
+                </td>
+                <td>
+                   <a onclick="mixpanel.track('new_download_win64');" href="https://tux3-dev.tox.im/jenkins/job/qTox-win64-nsis/lastSuccessfulBuild/artifact/setup-qtox64.exe">
+                      <span class="pe-7s-cloud-download">
+                         <span class="font FiraSans extrabold">Windows (64bits)</span>
+                      </span>
+                   </a>
+                </td>
+                <td>
+                   <a onclick="mixpanel.track('new_download_osx');" href="https://jenkins.libtoxcore.so/job/qTox%20OS%20X/lastSuccessfulBuild/artifact/qtox.zip">
+                      <span class="pe-7s-cloud-download">
+                         <span class="font FiraSans extrabold">OS X</span>
+                      </span>
+                   </a>
+                </td>
+                <td>
+                   <a onclick="mixpanel.track('new_download_android');" href="https://plus.google.com/communities/103125800027884896310">
+                        <span class="pe-7s-cloud-download">
+                           <span class="font FiraSans extrabold">Android</span>
+                        </span>
+                     </a>
+                </td>
+                <td><a onclick="mixpanel.track('new_download_other');" href="https://wiki.tox.im/binaries">
+                      <span class="pe-7s-cloud-download">
+                        <span class="font FiraSans extrabold">Linux</span>
+                      </span>
+                    </a>
+               </td>
               </tr>
             </table>
                 
@@ -154,17 +185,6 @@
             
             <a name="download"></a>
         </aside>
-        
-        <script type="text/javascript">
-        window.liveSettings = {
-            api_key: "c5875a3dc5c14daf8c9105ad052a304d",
-            picker: "bottom-right",
-            detectlang: true,
-            dynamic: true,
-            autocollect: true,
-            staging: true };
-        </script>
-<script type="text/javascript" src="//cdn.transifex.com/live.js"></script>
         
         <!-- build:js assets/js/build.js -->
         <script type="text/javascript" src="assets/vendor/fastclick/lib/fastclick.js"></script>
@@ -177,5 +197,16 @@
         <script type="text/javascript" src="assets/js/ScrollToPlugin.js"></script>
         <script type="text/javascript" src="assets/js/tox.bootstrap.js"></script>
         <!-- endbuild -->
+        
+        <script type="text/javascript">
+        window.liveSettings = {
+            api_key: "c5875a3dc5c14daf8c9105ad052a304d",
+            picker: "bottom-right",
+            detectlang: true,
+            dynamic: true,
+            autocollect: true,
+            staging: true };
+        </script>
+        <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>
     </body>
 </html>
