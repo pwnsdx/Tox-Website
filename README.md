@@ -2,14 +2,15 @@
 
 ![Preview](Resources/Preview.jpg)
 
-
 The new Tox Website.
 
 To use it:
-```npm install && grunt --gruntfile .gruntc.js```
 
-To update dependencies:
-```bower install```
+```shell
+npm install && \
+grunt --gruntfile .gruntc.js && \
+bower install --force-latest
+```
 
 #### Translations
 
