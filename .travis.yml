@@ -10,8 +10,9 @@ before_install:
 - npm update
 before_script:
 - npm install -g grunt-cli bower
-- bower update --force
 script:
+- npm install
+- bower install --force-latest
 - grunt --gruntfile .gruntc.js --stack
 notifications:
   email: false

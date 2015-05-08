@@ -38,6 +38,6 @@
     "commit": "d18dd6121a7c80c448b098638929e6e3bf6f460b"
   },
   "_source": "git://github.com/barisaydinoglu/Detectizr.git",
-  "_target": "~2.0.0",
+  "_target": ">=2.0.0",
   "_originalSource": "detectizr"
 }
