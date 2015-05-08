@@ -9,7 +9,7 @@ To use it:
 ```npm install && grunt --gruntfile .gruntc.js```
 
 To update dependencies:
-```bower update```
+```bower install```
 
 #### Translations
 
