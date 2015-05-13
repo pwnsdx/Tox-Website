@@ -1,6 +1,6 @@
 ### Tox Website [![Build Status](https://travis-ci.org/pwnsdx/Tox-Website.svg)](https://travis-ci.org/pwnsdx/Tox-Website)
 
-![Preview](Resources/Preview.jpg)
+![Preview](Resources/preview.png)
 
 The new Tox Website.
 
