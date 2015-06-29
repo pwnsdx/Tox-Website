@@ -50,7 +50,7 @@
         g: function(g) { return Foundation.utils.random_str(g); }, // Random string generator
         c: {}, // Cache
         d: { // Defines
-            scrollInstance: (new ScrollMagic()),
+            scrollInstance: (new ScrollMagic.Controller()),
             events: {
                 Click: (Modernizr.touch ? 'touchstart' : 'click'),
                 Scroll: (Modernizr.touch ? 'touchmove' : 'DOMMouseScroll mousewheel')
@@ -175,7 +175,7 @@
 
                     // Create the new scene
                     var scrollScenes = [
-                        (new ScrollScene({
+                        (new ScrollMagic.Scene({
                             duration: function()
                             {
                                 return Tox.resize.stats.h; // Refresh height of the scene dynamically
@@ -229,7 +229,7 @@
                 });
                 
                 // Create the new scene
-                var scrollScenes = (new ScrollScene({
+                var scrollScenes = (new ScrollMagic.Scene({
                     duration: 1200
                 })
                 //.setPin('aside.tObject section.preview')
