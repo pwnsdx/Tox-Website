@@ -136,7 +136,7 @@ module.exports = function(grunt) {
         },
         replace: {
             cssPaths: {
-                src: [ $production + 'index.html' ],    // Source files array (supports minimatch)
+                src: [ $production + 'index.html', $production + 'donate.html' ],    // Source files array (supports minimatch)
                 //dest: $production + 'index.html',
                 overwrite: true, // Overwrite matched source files
                 replacements: [{
