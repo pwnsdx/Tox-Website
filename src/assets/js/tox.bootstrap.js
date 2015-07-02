@@ -44,7 +44,7 @@
 }());
 
 (function() {
-    
+
     var Tox = {
         s: Foundation.utils.S, // Main selector
         g: function(g) { return Foundation.utils.random_str(g); }, // Random string generator
@@ -59,11 +59,11 @@
                 imgs: window.imagesRevisionsDensity,
                 scrollingArrow: 'header.toxHeader aside a',
                 downloadLinuxClientsSelection: 'aside.tObject.downloadNow table tr td input',
-                downloadButtons: 'header.toxHeader section div p a.button, header.toxHeader section div p:last-child a'
+                downloadButtons: 'header.toxHeader section div p a.dlbutton, header.toxHeader section div p:last-child a.dlbutton'
             }
         }
     };
-    
+
     // Run the Bootstrap
     Tox.Bootstrap = function()
     {
@@ -83,24 +83,24 @@
         this.scenesMap.Header();
         this.scenesMap.Content.One();
         this.scenesMap.Footer();
-                
+
         // Watch Resize Events
         Tox.resize.run();
     };
-    
+
     Tox.scenesMap = {
         memory: {},
-        
+
         Header: function()
         {
             // Make timeline: https://github.com/janpaepke/ScrollMagic/blob/master/examples/advanced/svg_drawing.html#L80
-            
+
             // Lock scrolling only for tablet/desktop
             switch(Modernizr.touch) {
-                    
+
                 // This is a mobile/tablet device - Do not lock scrolling
                 case true: Tox.scrollManager.Unlock(); break;
-                
+
                 // Desktop
                 // Lock scrolling & bind unlocking to keyboard arrows
                 case false:
@@ -115,21 +115,21 @@
                 });
                 break;
             }
-            
+
             // If the user support csstransforms, show full-screen header
             if(Modernizr.csstransforms) {
                 Tox.resize.addEvent(function(height, width) {
                     Tox.s('header.toxHeader').css({height: height});
                 });
             }
-            
+
             // Remove anchors as Javascript is active
             Tox.s('a[data-anchor=true]').attr('href', '');
-            
+
             // Show the download button details
             Tox.s('header.toxHeader section div p.hide').removeClass('hide');
             switch(Detectizr.os.name) {
-                
+
                 case 'windows': // Windows
                 if(Tox.utils.ltVersion('10.7.0', Detectizr.os.version)) {
                     Tox.utils.replaceDownloadText('win', 'Windows 7 or later');
@@ -145,16 +145,16 @@
                     Tox.utils.replaceDownloadText('osx', 'Please upgrade to OS X 10.7 or later');
                 }
                 break;
-                    
+
                 case 'ios': // iOS
                 Tox.utils.replaceDownloadText('osx', 'iOS 7 or later');
                 break;
-                    
+
                 case 'linux': // Linux
                 Tox.utils.replaceDownloadText('nux', 'Debian &amp; Ubuntu');
                 break;
             }
-                        
+
             // Show Header
             TweenMax.to('header.toxHeader section', .4, {
                 delay: 1,
@@ -187,38 +187,38 @@
                     ];
                 }
             });
-            
+
             // Add scrolling arrow bouncing
             (new TimelineMax({repeat:300, delay:0.5})
                 .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:10, ease:Bounce.easeOut}))
                 .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
-            
+
             // Handle arrow scrolling
             Tox.s(Tox.d.cssPaths.scrollingArrow).on(Tox.d.events.Click, function(e) {
                 e.preventDefault();
-                
+
                 // Unlock scrolling
                 Tox.scrollManager.Unlock(true);
             });
-            
+
             // Handle download button
             Tox.s(Tox.d.cssPaths.downloadButtons).on(Tox.d.events.Click, function(e) {
                 e.preventDefault();
-                
+
                 // Unlock scrolling
                 Tox.scrollManager.Unlock();
-                
+
                 // Scroll to the bottom of the page
                 TweenLite.to(window, .8, {scrollTo:{x:0, y: Tox.s(document).height()}});
             });
-            
+
             return true;
         },
-        
+
         Content:
         {
             One: function()
-            {                
+            {
                 // Create Tween
                 var Tween = TweenMax.to([
                     'aside.tObject section.preview',
@@ -227,7 +227,7 @@
                     className: '+=tween',
                     ease: Sine.easeInOut
                 });
-                
+
                 // Create the new scene
                 var scrollScenes = (new ScrollMagic.Scene({
                     duration: 1200
@@ -237,21 +237,21 @@
                 .addTo(Tox.d.scrollInstance));
             }
         },
-        
+
         Footer: function()
         {
             // Handle selection for Linux text
             Tox.s(Tox.d.cssPaths.downloadLinuxClientsSelection).on(Tox.d.events.Click, function(e) {
                 Tox.s(this).select();
             });
-            
+
             return true;
         }
     };
-    
+
     // Resize listener
     Tox.resize = {
-        
+
         memory: [],
         stats:
         {
@@ -262,17 +262,17 @@
         {
             // Push the callback to memory
             this.memory.push(execCallback);
-            
+
             // Execute callbacks for the first time
             execCallback(Tox.resize.stats.h, Tox.resize.stats.w);
-            
+
             return this.memory.length;
         },
         removeEvent: function(id)
         {
             this.memory[ id ] = false;
         },
-        
+
         run: function()
         {
             var execCallbacks = function(h, w)
@@ -282,25 +282,25 @@
                     Tox.resize.memory[i](h, w);
                 }
             };
-            
+
             // Fire events
             Tox.s(window).on('resize.tox', Foundation.utils.throttle(function(e) {
-                                
+
                 // Get Height / Width
                 Tox.resize.stats = {
                     h: Tox.s('body').outerHeight(),
                     w: Tox.s('body').outerWidth()
                 };
-                
+
                 // Execute callbacks
                 execCallbacks(Tox.resize.stats.h, Tox.resize.stats.w);
             }, 10));
         }
     };
-    
+
     // Unlock / Lock scrolling
     Tox.scrollManager = {
-      
+
         Lock: function()
         {
             Tox.s('body').css({'overflow': 'hidden'});
@@ -316,35 +316,35 @@
                     y: 0
                 }
             });
-            
+
             return true;
         },
-        
+
         Unlock: function(scrollToPresentation)
         {
             if(Tox.s('body').css('overflow') === 'auto') return false;
-            
+
             // Unlock scrolling
             Tox.s('body').css({'overflow': 'auto'});
             Tox.s(document).off(Tox.d.events.Scroll);
-            
+
             // Unlock keyboard down/up keys
             if(!Modernizr.touch) Tox.s(document).off('keydown.scrollManager');
-            
+
             // Scroll to presentation
             if(jQuery.type(scrollToPresentation) !== 'undefined') TweenLite.to(window, 1, {scrollTo:{x:0, y: Tox.resize.stats.h}});
-            
+
             return true;
         }
     };
-    
+
     // Tox Utilities
     Tox.utils = {
-        
+
         devicePixelRatio: function()
         {
             if(jQuery.type(Tox.c.pixelRatio) !== 'undefined') return Tox.c.pixelRatio;
-            
+
             var pixelRatio = 1;
 
             if(jQuery.type(window.devicePixelRatio) !== 'undefined')
@@ -368,12 +368,12 @@
                     pixelRatio = Math.ceil(ratio);
                 });
             }
-            
+
             // Return and cache result
             Tox.c.pixelRatio = pixelRatio;
             return pixelRatio;
         },
-        
+
         cmpVersion: function(a, b) {
             var i, cmp, len, re = /(\.0)+[^\.]*$/;
             a = (a + '').replace(re, '').split('.');
@@ -398,6 +398,6 @@
             Tox.s('span#download-specs').html(specs + ' &middot;');
         }
     };
-    
+
     return Tox.Bootstrap();
 })();
