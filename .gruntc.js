@@ -125,6 +125,7 @@ module.exports = function(grunt) {
         useminPrepare: {
             html: [
                 $production + 'index.html',
+                $production + 'donate.html',
                 $production + 'hidden.html'
             ]
         },
@@ -169,7 +170,7 @@ module.exports = function(grunt) {
             }
         },
         usemin: {
-            html: $production + 'index.html',
+            html: [$production + 'index.html', $production + 'donate.html'],
             blockReplacements: {
                 css: function(block) {
                     return '<link type="text/css" href="' + block.dest + '" rel="stylesheet" media="screen" />';
