@@ -115,8 +115,6 @@ body {
     font-style: normal;
     font-smooth:always;
     text-rendering: optimizeLegibility;
-
-    cursor:default;
 }
 .font.FiraSans {
     font-family: 'Fira Sans', 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
