@@ -412,9 +412,6 @@ aside.tObject section.preview {
 
     background-position:0 top;
 }
-aside.tObject section.preview.tween {
-    background-position:-1000px top;
-}
 aside.tObject section.preview div {
     height:500px;
     position:absolute;
@@ -432,25 +429,15 @@ aside.tObject section.preview div {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
-aside.tObject section.preview div:first-child {
+aside.tObject section.preview div {
     background-position:top left;
-    width:952px;
+    width:1016px;
 
     left: 0;
     margin-left:-150px;
 }
-aside.tObject section.preview div.tween:first-child {
+aside.tObject section.preview div.tween {
     margin-left:0px;
-}
-aside.tObject section.preview div:last-child {
-    background-position:top right;
-    width:343px;
-
-    right: 0;
-    margin-right:-150px;
-}
-aside.tObject section.preview div.tween:last-child {
-    margin-right:0px;
 }
 
 /* FOOTER */
