@@ -12,18 +12,24 @@ bower install --force-latest && \
 grunt --gruntfile .gruntc.js
 ```
 
+### Contributing
+
+When you contribute changes that will modify look of website, please include screenshot / link to webm that would show changes.
+
 #### Translations
 
-Submit translations [here](https://www.transifex.com/projects/p/tox-website-next/).
+Submitting translations is currently being worked on. If you want to help, please see [issue #12](https://github.com/Tox/Tox-Website/issues/12).
 
 #### ToDo
 
-###### DOING
+Please look at [issues](https://github.com/Tox/Tox-Website/issues).
+
+##### DOING
 
 - Fix responsive issues
 - Finish the homepage
 
-###### VERIFICATIONS TO DO WHEN READY
+##### VERIFICATIONS TO DO WHEN READY
 
 - Check the compatibility with all major browsers (IE, Opera, Chrome, Firefox, Safari)
 - Check compatibility with IE 9
