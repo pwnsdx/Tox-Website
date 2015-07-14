@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "homepage": "https://github.com/pwnsdx/Tox-Website",
   "authors": [
-    "Tox Foundation"
+    "Tox"
   ],
   "license": "GNU",
   "dependencies": {
