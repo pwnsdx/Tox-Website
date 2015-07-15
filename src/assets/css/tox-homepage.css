@@ -130,6 +130,12 @@ header.toxHeader section div p {
     text-align:center;
     font-size:20px;
 }
+header.toxHeader section div p.infos {
+    font-size:16px;
+}
+header.toxHeader section div p.note {
+    font-size:14px;
+}
 header.toxHeader section div p a {
     color:#d7d1d1;
 }
@@ -145,9 +151,6 @@ header.toxHeader section div p a.button {
 }
 header.toxHeader section div p a.button:hover {
     background-color:#d8524e;
-}
-header.toxHeader section div p:last-child {
-    font-size:16px;
 }
 header.toxHeader aside.footer {
     position:absolute;
