@@ -4,7 +4,7 @@
  *    | | | (_) |>  <
  *    |_|  \___//_/\_\
  *
- * Copyright (C) 2013-2015 The Tox Foundation <https://tox.im/>
+ * Copyright (C) 2015 The Tox Project <https://tox.chat/>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
