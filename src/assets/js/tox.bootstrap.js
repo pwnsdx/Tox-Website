@@ -59,7 +59,8 @@
                 imgs: window.imagesRevisionsDensity,
                 scrollingArrow: 'header.toxHeader aside a',
                 downloadLinuxClientsSelection: 'aside.tObject.downloadNow table tr td input',
-                downloadButtons: 'header.toxHeader section div p a.dlbutton, header.toxHeader section div p:last-child a.dlbutton'
+                downloadButton: 'header.toxHeader section div p.download a.dlbutton',
+                downloadSectionLink: 'header.toxHeader section div p.infos a.dlbutton'
             }
         }
     };
@@ -81,7 +82,7 @@
 
         // Load scenes
         this.scenesMap.Header();
-        this.scenesMap.Content.One();
+        //this.scenesMap.Content.One();
         this.scenesMap.Footer();
 
         // Watch Resize Events
@@ -128,14 +129,22 @@
 
             // Show the download button details
             Tox.s('header.toxHeader section div p.hide').removeClass('hide');
+            
+            // Open the download link in a new tab
+            Tox.s(Tox.d.cssPaths.downloadButton).attr('target', '_blank');
+            
             switch(Detectizr.os.name) {
 
                 case 'windows': // Windows
-                if(Tox.utils.ltVersion('10.7.0', Detectizr.os.version)) {
+                if(Tox.utils.gtVersion('7', Detectizr.os.version)) {
                     Tox.utils.replaceDownloadText('win', 'Windows 7 or later');
                 } else {
                     Tox.utils.replaceDownloadText('win', 'Please upgrade to Windows 7 or later');
                 }
+                
+                // Set download button link
+                Tox.s(Tox.d.cssPaths.downloadButton)
+                    .attr('href', 'https://wiki.tox.chat/Binaries#Windows');
                 break;
 
                 case 'mac os': // OS X
@@ -144,17 +153,58 @@
                 } else {
                     Tox.utils.replaceDownloadText('osx', 'Please upgrade to OS X 10.7 or later');
                 }
+                    
+                // Set download button link
+                Tox.s(Tox.d.cssPaths.downloadButton)
+                    .attr('href', 'https://wiki.tox.chat/Binaries#MacOSX');
                 break;
 
                 case 'ios': // iOS
                 Tox.utils.replaceDownloadText('osx', 'iOS 7 or later');
+                    
+                // Set download button link
+                Tox.s(Tox.d.cssPaths.downloadButton)
+                    .attr('href', 'https://wiki.tox.chat/Binaries#iOS');
                 break;
 
                 case 'linux': // Linux
-                Tox.utils.replaceDownloadText('nux', 'Debian &amp; Ubuntu');
+                Tox.utils.replaceDownloadText('nux', 'GNU/Linux');
+                    
+                // Set download button link
+                Tox.s(Tox.d.cssPaths.downloadButton)
+                    .attr('href', 'https://wiki.tox.chat/Binaries#Linux');
+                break;
+                    
+                default:
+                // No OS found, add Tox.d.cssPaths.downloadButton to Tox.d.cssPaths.downloadSectionLink
+                Tox.d.cssPaths.downloadSectionLink = Tox.d.cssPaths.downloadSectionLink + ', ' + Tox.d.cssPaths.downloadButton;
                 break;
             }
 
+            // Handle download button
+            Tox.s(Tox.d.cssPaths.downloadSectionLink).on(Tox.d.events.Click, function(e) {
+                e.preventDefault();
+
+                // Unlock scrolling
+                Tox.scrollManager.Unlock();
+
+                // Scroll to the bottom of the page
+                TweenLite.to(window, .8, {scrollTo:{x:0, y: Tox.s(document).height()}});
+            });
+            
+            // Handle arrow scrolling
+            Tox.s(Tox.d.cssPaths.scrollingArrow).on(Tox.d.events.Click, function(e) {
+                e.preventDefault();
+
+                // Unlock scrolling
+                Tox.scrollManager.Unlock(true);
+            });
+            
+            // Add scrolling arrow bouncing
+            (new TimelineMax({repeat:300, delay:0.5})
+                .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:10, ease:Bounce.easeOut}))
+                .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
+            
             // Show Header
             TweenMax.to('header.toxHeader section', .4, {
                 delay: 1,
@@ -186,30 +236,6 @@
                         .addTo(Tox.d.scrollInstance))
                     ];
                 }
-            });
-
-            // Add scrolling arrow bouncing
-            (new TimelineMax({repeat:300, delay:0.5})
-                .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {y:10, ease:Bounce.easeOut}))
-                .add(TweenMax.to(Tox.d.cssPaths.scrollingArrow, 1, {delay: 2, y:0, ease:Sine.easeOut})));
-
-            // Handle arrow scrolling
-            Tox.s(Tox.d.cssPaths.scrollingArrow).on(Tox.d.events.Click, function(e) {
-                e.preventDefault();
-
-                // Unlock scrolling
-                Tox.scrollManager.Unlock(true);
-            });
-
-            // Handle download button
-            Tox.s(Tox.d.cssPaths.downloadButtons).on(Tox.d.events.Click, function(e) {
-                e.preventDefault();
-
-                // Unlock scrolling
-                Tox.scrollManager.Unlock();
-
-                // Scroll to the bottom of the page
-                TweenLite.to(window, .8, {scrollTo:{x:0, y: Tox.s(document).height()}});
             });
 
             return true;
