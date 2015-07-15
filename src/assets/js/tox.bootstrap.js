@@ -136,43 +136,37 @@
             switch(Detectizr.os.name) {
 
                 case 'windows': // Windows
-                if(Tox.utils.gteVersion('7', Detectizr.os.version)) {
-                    Tox.utils.replaceDownloadText('win', 'Windows 7 or later');
-                } else {
-                    Tox.utils.replaceDownloadText('win', 'Please upgrade to Windows 7 or later');
-                }
-                
-                // Set download button link
-                Tox.s(Tox.d.cssPaths.downloadButton)
-                    .attr('href', 'https://wiki.tox.chat/Binaries#Windows');
-                break;
+                    //if(Tox.utils.gteVersion('7', Detectizr.os.version)) {
+                        Tox.utils.replaceDownloadText('win');
+
+                    // Set download button link
+                    Tox.s(Tox.d.cssPaths.downloadButton)
+                        .attr('href', 'https://wiki.tox.chat/Binaries#windows');
+                    break;
 
                 case 'mac os': // OS X
-                if(Tox.utils.ltVersion('10.7.0', Detectizr.os.version)) {
-                    Tox.utils.replaceDownloadText('osx', 'OS X 10.7 or later');
-                } else {
-                    Tox.utils.replaceDownloadText('osx', 'Please upgrade to OS X 10.7 or later');
-                }
-                    
-                // Set download button link
-                Tox.s(Tox.d.cssPaths.downloadButton)
-                    .attr('href', 'https://wiki.tox.chat/Binaries#MacOSX');
-                break;
+                    //if(Tox.utils.ltVersion('10.7.0', Detectizr.os.version)) {
+                        Tox.utils.replaceDownloadText('osx');
+
+                    // Set download button link
+                    Tox.s(Tox.d.cssPaths.downloadButton)
+                        .attr('href', 'https://wiki.tox.chat/Binaries#mac_os_x');
+                    break;
 
                 case 'ios': // iOS
-                Tox.utils.replaceDownloadText('osx', 'iOS 7 or later');
-                    
-                // Set download button link
-                Tox.s(Tox.d.cssPaths.downloadButton)
-                    .attr('href', 'https://wiki.tox.chat/Binaries#iOS');
+                    Tox.utils.replaceDownloadText('osx');
+
+                    // Set download button link
+                    Tox.s(Tox.d.cssPaths.downloadButton)
+                        .attr('href', 'https://wiki.tox.chat/Binaries#ios');
                 break;
 
                 case 'linux': // Linux
-                Tox.utils.replaceDownloadText('nux', 'GNU/Linux');
+                Tox.utils.replaceDownloadText('nux');
                     
                 // Set download button link
                 Tox.s(Tox.d.cssPaths.downloadButton)
-                    .attr('href', 'https://wiki.tox.chat/Binaries#Linux');
+                    .attr('href', 'https://wiki.tox.chat/Binaries#gnulinux');
                 break;
                     
                 default:
@@ -396,9 +390,8 @@
         ltVersion: function(a, b) {
             return (this.cmpVersion(a, b) < 0);
         },
-        replaceDownloadText: function(os, specs) {
+        replaceDownloadText: function(os) {
             Tox.s('span#download-platform').addClass(os).append('&nbsp;&nbsp;');
-            Tox.s('span#download-specs').html(specs + ' &middot;');
         }
     };
 
