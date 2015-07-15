@@ -136,7 +136,7 @@
             switch(Detectizr.os.name) {
 
                 case 'windows': // Windows
-                if(Tox.utils.gtVersion('7', Detectizr.os.version)) {
+                if(Tox.utils.gteVersion('7', Detectizr.os.version)) {
                     Tox.utils.replaceDownloadText('win', 'Windows 7 or later');
                 } else {
                     Tox.utils.replaceDownloadText('win', 'Please upgrade to Windows 7 or later');
