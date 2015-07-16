@@ -5,6 +5,11 @@ aside.tObject.downloadNow table tr.headTable td span,
 header.toxHeader section div p a.button span {
     background:url(../images/Systems.png);
 }
-aside.tObject section.preview div {
-    background:url(../images/Windows-Sprite.png);
+aside.tObject div.preview {
+    background:url(../images/Windows-Sprite.png) no-repeat scroll center / cover;
+}
+@media screen and (max-width: 667px) {
+    aside.tObject div.preview {
+        background:url(../images/Antox.png) no-repeat scroll center / cover;
+    }
 }
