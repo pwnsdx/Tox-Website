@@ -41,36 +41,36 @@ a {
 * + Custom color
 */
 ::selection {
-    background:#f6f7fb;
-    color:#000;
+    background:#fdadab;
+    color:#fff;
     -webkit-text-shadow: none;
     -moz-text-shadow: none;
     text-shadow: none;
 }
 ::-moz-selection {
-    background:#f6f7fb;
-    color:#000;
+    background:#fdadab;
+    color:#fff;
     -webkit-text-shadow: none;
     -moz-text-shadow: none;
     text-shadow: none;
 }
 ::-webkit-selection {
-    background:#f6f7fb;
-    color:#000;
+    background:#fdadab;
+    color:#fff;
     -webkit-text-shadow: none;
     -moz-text-shadow: none;
     text-shadow: none;
 }
 ::-o-selection {
-    background:#f6f7fb;
-    color:#000;
+    background:#fdadab;
+    color:#fff;
     -webkit-text-shadow: none;
     -moz-text-shadow: none;
     text-shadow: none;
 }
 ::-ms-selection {
-    background:#f6f7fb;
-    color:#000;
+    background:#fdadab;
+    color:#fff;
     -webkit-text-shadow: none;
     -moz-text-shadow: none;
     text-shadow: none;
