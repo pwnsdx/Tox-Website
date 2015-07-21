@@ -408,37 +408,39 @@ header.toxHeader section div p a.button span.droid {
 }
 
 aside.tObject div.preview {
-    height:495px;
-    width:1016px;
+    height:473px;
+    width:996px;
 
+    margin-top:40px;
+    
     border-top:1px solid #d2d2d2;
     border-left:1px solid #d2d2d2;
     border-right:1px solid #d2d2d2;
 
     box-shadow: 0px 20px 80px -10px rgba(0,0,0,.3);
-
+    
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
 
 @media screen and (max-width: 1016px) {
     aside.tObject div.preview {
-        height:330px;
-        width:677px;
+        height:294.5px;
+        width:622.5px;
     }
 }
 
 @media screen and (max-width: 667px) {
     aside.tObject div.preview {
         width:360px;
-        height:640px
+        height:640px;
     }
 }
 
 @media screen and (max-width: 360px) {
     aside.tObject div.preview {
         width:240px;
-        height:426px
+        height:426px;
     }
 }
 
