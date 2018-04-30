@@ -17,6 +17,6 @@
     "grunt-usemin": "^3.0.0"
   },
   "dependencies": {
-    "imagemin-mozjpeg": "^4.0.0"
+    "imagemin-mozjpeg": "^5.1.0"
   }
 }
